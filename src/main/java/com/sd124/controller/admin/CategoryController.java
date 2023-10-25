@@ -19,6 +19,7 @@ public class CategoryController {
     public String listCategory(Model model){
         List<Categories> lstCate = cateRepo.findAll();
         model.addAttribute("lstCate", lstCate);
+
         return "admin/category/index";
     }
 
