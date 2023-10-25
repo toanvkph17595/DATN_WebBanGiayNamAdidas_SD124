@@ -38,14 +38,14 @@ public class HomeController {
     }
 
     @GetMapping("/view-product/{id}")
-    public String viewProduct(@PathVariable Integer id, Model model, @Param("url") String url) {
+    public String viewProduct(@PathVariable Integer id, Model model) {
         List<Sizes> lstSize = sizeRepo.findAll();
         model.addAttribute("lstSize", lstSize);
-//        List<ProductImages> lstImages = productImageRepo.findImageProductByUrl("%" + url + "%");
+        List<ProductImages> lstImages = productImageRepo.findAll();
 //        ProductVariants productVariants = productVariantRepo.findById(id).get();
         Products products = productRepo.findById(id).get();
 //        model.addAttribute("productVariant", productVariants);
-//        model.addAttribute("lstImage", lstImages);
+        model.addAttribute("lstImage", lstImages);
         model.addAttribute("product", products);
         return "customer/view_product";
     }
