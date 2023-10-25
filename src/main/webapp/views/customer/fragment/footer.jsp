@@ -64,6 +64,7 @@
 </footer>
 <!-- Bootstrap js -->
 <script src="/static/js/bootstrap.bundle.min.js"></script>
-
+<!-- plugin -->
+<script src="/static/plugins/fslightbox.js"></script>
 <!-- Custom js -->
 <script src="/static/js/script.js?v=2.0"></script>
