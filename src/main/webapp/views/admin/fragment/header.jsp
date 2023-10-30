@@ -11,6 +11,7 @@
         <a class="nav-item nav-link active" href="/admin/order">Quản lý đơn hàng</a>
         <a class="nav-item nav-link active" href="/admin/product">Quản lý sản phẩm</a>
         <a class="nav-item nav-link active" href="/admin/category">Quản lý nhóm sản phẩm</a>
+        <a class="nav-item nav-link active" href="/admin/color">Quản lý màu sản phẩm</a>
     </div>
 
     <ul class="navbar-nav ml-auto">

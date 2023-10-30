@@ -19,7 +19,9 @@
                 <td>${cate.name}</td>
                 <td>
                     <a href="/admin/category/edit/${cate.id}" class="btn btn-sm btn-secondary">Sửa</a>
+                    <a href="/admin/category/delete/${cate.id}" class="btn btn-sm btn-danger">Xóa</a>
                 </td>
+
             </tr>
         </c:forEach>
         </tbody>

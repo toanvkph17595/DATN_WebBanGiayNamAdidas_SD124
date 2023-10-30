@@ -3,6 +3,8 @@ package com.sd124.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Data
 @NoArgsConstructor @AllArgsConstructor
@@ -14,4 +16,8 @@ public class Categories {
 
     @Column(name = "Name")
     private String name;
+
+    @OneToMany(mappedBy = "category_id")
+    List<Products> products;
+
 }

@@ -10,18 +10,25 @@
                 <th>Tên</th>
                 <th>Giá</th>
                 <th>Ảnh</th>
+                <th>Số lượng</th>
+                <th>Trạng thái</th>
+                <th>Danh mục</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            <c:forEach items="${productList}" var="p">
+            <c:forEach items="${lstPro}" var="p">
                 <tr>
-                    <td>${p.code}</td>
+                    <td>${p.id}</td>
                     <td>${p.name}</td>
                     <td>${p.price} đ</td>
-                    <td><img class="product-img" src="${p.image}" alt=""/></td>
+                    <td><img class="product-img" src="../static/images/${p.image}" alt=""/></td>
+                    <td>${p.quantity}</td>
+                    <td>${p.description}</td>
+                    <td>${p.category_id.name}</td>
                     <td>
-                        <a href="/admin/product/update/${p.id}" class="btn btn-sm btn-secondary">Sửa</a>
+                        <a href="/admin/product/edit/${p.id}" class="btn btn-sm btn-secondary">Sửa</a>
+                        <a href="/admin/product/delete/${p.id}" class="btn btn-sm btn-danger">Xóa</a>
                     </td>
                 </tr>
             </c:forEach>

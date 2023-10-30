@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data @NoArgsConstructor @AllArgsConstructor
-@Table(name = "ProductVariants")
+@Table(name = "Productvariants")
 public class ProductVariants {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

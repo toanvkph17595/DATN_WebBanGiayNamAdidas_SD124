@@ -1,10 +1,9 @@
 package com.sd124.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Data
 @NoArgsConstructor @AllArgsConstructor
@@ -24,4 +23,11 @@ public class Accounts {
     private String Image;
     @Column(name ="Address")
     private String address;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "Authoritis",
+            joinColumns = @JoinColumn(name = "IdROLE"),
+            inverseJoinColumns = @JoinColumn(name = "Username")
+    )
+    List<Roles> roles;
 }

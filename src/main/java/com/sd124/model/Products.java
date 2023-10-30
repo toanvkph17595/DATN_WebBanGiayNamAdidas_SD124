@@ -1,15 +1,17 @@
 package com.sd124.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 
 @Data @AllArgsConstructor @NoArgsConstructor
 @Entity
 @Table(name = "Products")
-
 public class Products {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,5 +35,4 @@ public class Products {
     @ManyToOne
     @JoinColumn(name = "IdCATE")
     private Categories category_id;
-
 }

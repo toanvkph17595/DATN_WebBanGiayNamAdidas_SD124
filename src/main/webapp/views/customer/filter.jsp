@@ -1,7 +1,7 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <%@ include file="fragment/header.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
     <div class="container">
 
         <div class="row">
@@ -23,7 +23,7 @@
                             <div class="card-body">
                                 <ul class="list-menu">
                                     <c:forEach items="${lstCate}" var="cate">
-                                    <li><a href="/filter/${cate.id}">${cate.name} </a></li>
+                                        <li ><a href="/filter/${cate.id}">${cate.name} </a></li>
                                     </c:forEach>
 
                                 </ul>
@@ -94,12 +94,12 @@
 
                 <!-- ========= content items ========= -->
                 <div class="row">
-                    <c:forEach items="${data.content}" var="p">
+                    <c:forEach items="${lstPro}" var="p">
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <a href="/view-product/${p.id}">
                                 <figure class="card card-product-grid"  style="background-color: rgb(238, 238, 238);">
                                     <div class="img-wrap">
-                                            <img src="../static/images/${p.image}">
+                                        <img src="../static/images/${p.image}">
                                     </div>
                                     <figcaption class="info-wrap border-top">
                                         <div class="price-wrap">
@@ -114,43 +114,11 @@
                         </div> <!-- col end.// -->
                     </c:forEach>
                 </div>
-                <hr>
-                <footer class="d-flex mt-4">
-<%--                    <div>--%>
-<%--                        <a href="javascript: history.back()" class="btn btn-light"> &laquo; Go back</a>--%>
-<%--                    </div>--%>
-                    <nav class="ms-3">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link" href="/">First</a>
-                            </li>
-                            <c:if test="${data.number != 0}">
-                            <li class="page-item">
-                                <a class="page-link" href="/?page=${data.number - 1}">Previous</a>
-                            </li>
-                            </c:if>
-                            <li class="page-item"><a class="page-link" href="#">${data.number}</a></li>
-<%--                            <li class="page-item active" aria-current="page">--%>
-<%--                                <span class="page-link">2</span>--%>
-<%--                            </li>--%>
-<%--                            <li class="page-item"><a class="page-link" href="#">3</a></li>--%>
-
-                            <li class="page-item">
-                                <a class="page-link" href="/?page=${data.number + 1}">Next</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="/?page=${data.totalPages - 1}">Last</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </footer>
-
             </main> <!-- col .// -->
         </div> <!-- row .// -->
-
     </div> <!-- container .//  -->
-</section>
 <!-- ============== SECTION CONTENT END// ============== -->
 
 
 <%@ include file="fragment/footer.jsp" %>
+
