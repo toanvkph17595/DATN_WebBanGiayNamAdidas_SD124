@@ -22,7 +22,7 @@
                                 <a class="dropdown-toggle nav-link" href="#" data-bs-toggle="dropdown">
                                     Đào Trường Sơn
                                 </a>
-                                <ul class="dropdown-menu bg-secondary">
+                                <ul class="dropdown-menu bg-secondary-light">
                                     <li> <a class="dropdown-item" href="#">Thông tin tài khoản </a> </li>
                                     <li> <a class="dropdown-item" href="#">Đăng xuất</a> </li>
                                 </ul>
