@@ -26,7 +26,7 @@
     <%@ include file="header.jsp" %>
     <div class="row" style="min-height: 600px;">
         <%@ include file="aside.jsp" %>
-        <article class="col-md-10" style="background-color: lightgray;">
+        <article class="col-md-10" style="background-color: white;">
             <div class="m-2 p-2">
                 <div>
                     <form class="pb-3">
@@ -64,15 +64,15 @@
                                         <%--                        <c:if test="${ acc.admin==1 }">Quản trị viên</c:if>--%>
                                 </td>
                                 <td class="text-center">
-                                    <a href="">Sửa >></a>
+                                    <btn href="" class="btn btn-primary">Sửa</btn>
+                                    <btn href="" class="btn btn-danger">Xóa</btn>
                                         <%--                        /admin/accounts/edit/${ acc.id }--%>
                                 </td>
                             </tr>
                         </c:forEach>
                         <tr>
                             <td class="text-center" colspan="8">
-                                <a class="text-light bi bi-person-plus"
-                                   href="">Thêm mới >></a>
+                                <a href=""><< Thêm mới >></a>
                             </td>
                         </tr>
                         </tbody>
