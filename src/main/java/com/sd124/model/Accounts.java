@@ -24,4 +24,8 @@ public class Accounts {
     private String Image;
     @Column(name ="Address")
     private String address;
+    @Column(name ="Status")
+    private int status;
+    @Column(name ="Phone")
+    private String phone;
 }
