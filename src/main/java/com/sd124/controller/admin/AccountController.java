@@ -20,7 +20,7 @@ public class AccountController {
 
     @GetMapping("index")
     public String index(Model model, @RequestParam(name = "page", defaultValue = "0") Integer page,
-                       @RequestParam(name = "size", defaultValue = "1") Integer size){
+                       @RequestParam(name = "size", defaultValue = "10") Integer size){
         Pageable pageable = PageRequest.of(page, size);
         Page<Accounts> data = this.accountRepo.findAllStaff(pageable);
         model.addAttribute("data", data);
