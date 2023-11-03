@@ -90,7 +90,7 @@
                                     <a href="/admin/account/index?page=${ data.number - 1 }">${ data.number - 1 }</a>
                                 </div>
                             </c:if>
-                            <div class="page-item" style="padding-left: 5px;padding-right: 5px;">
+                            <div class="page-item" style="padding-left: 5px;padding-right: 5px;color: black">
                                 <a href="#"> ${ data.number } </a>
                             </div>
                             <c:if test="${ data.number < data.totalPages - 2 }">
