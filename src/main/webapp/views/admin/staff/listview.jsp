@@ -34,16 +34,16 @@
                     </form>
                 </div>
                 <div>
-                    <table class="table table-bordered border-dark">
+                    <table class="table table-bordered border-dark" style="font-size: small;line-height: 30px">
                         <thead>
                         <tr>
-                            <th class="text-center">Tên đăng nhập</th>
-                            <th class="text-center">Họ và tên</th>
-                            <th class="text-center">Email</th>
-                            <th class="text-center">Ảnh</th>
-                            <th class="text-center">Địa chỉ</th>
-                            <th class="text-center">Trạng thái</th>
-                            <th class="text-center">Hành động</th>
+                            <th class="text-center"> Tên đăng nhập</th>
+                            <th class="text-center"> Họ và tên</th>
+                            <th class="text-center"> Email</th>
+                            <th class="text-center"> Số điện thoại</th>
+                            <th class="text-center"> Địa chỉ</th>
+                            <th class="text-center"> Trạng thái</th>
+                            <th class="text-center"> Hành động</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -52,20 +52,17 @@
                                 <td class="">${ acc.userName }</td>
                                 <td class="">${ acc.fullName }</td>
                                 <td class="">${ acc.email }</td>
-                                <td class="">${ acc.image }</td>
-                                <td class="">${ acc.address }
-                                        <%--                        <c:if--%>
-                                        <%--                            test="${ acc.activated==0 }">Ngừng hoạt động</c:if>--%>
-                                        <%--                        <c:if--%>
-                                        <%--                            test="${ acc.activated==1 }">Đang hoạt động</c:if>--%>
-                                </td>
+                                <td class="">${ acc.phone }</td>
+                                <td class="">${ acc.address }</td>
                                 <td class="">
+                                    <c:if test="${ acc.status==0 }">Ngừng hoạt động</c:if>
+                                    <c:if test="${ acc.status==1 }">Đang hoạt động</c:if>
                                         <%--                        <c:if test="${ acc.admin==0 }">Nhân viên</c:if>--%>
                                         <%--                        <c:if test="${ acc.admin==1 }">Quản trị viên</c:if>--%>
                                 </td>
                                 <td class="text-center">
-                                    <btn href="" class="btn btn-primary">Sửa</btn>
-                                    <btn href="" class="btn btn-danger">Xóa</btn>
+                                    <a href="" class="btn btn-primary" style="font-size: small">Sửa</a>
+                                    <a href="" class="btn btn-danger" style="font-size: small">Xóa</a>
                                         <%--                        /admin/accounts/edit/${ acc.id }--%>
                                 </td>
                             </tr>
@@ -80,27 +77,35 @@
                     <div>
                         <div class="pagination text-center">
                             <div>Trang: </div>
-                            <c:if test="${ data.number != 0 }">
+                            <div class="page-item" style="padding-left: 5px;padding-right: 5px;">
+                                <a class="btn btn-secondary" href="/admin/account/index">|<</a>
+                            </div>
+                            <c:if test="${ data.number >= 1 }">
                                 <div class="page-item" style="padding-left: 5px;padding-right: 5px;">
-                                    <a href="/admin/account/index">0</a>
+                                    <a class="btn btn-secondary" href="/admin/account/index?page=${ data.number - 1 }"><<</a>
                                 </div>
                             </c:if>
-                            <c:if test="${ data.number > 1 }">
+                            <c:if test="${ data.number == 0 }">
                                 <div class="page-item" style="padding-left: 5px;padding-right: 5px;">
-                                    <a href="/admin/account/index?page=${ data.number - 1 }">${ data.number - 1 }</a>
+                                    <a class="btn btn-secondary" href=""><<</a>
                                 </div>
                             </c:if>
                             <div class="page-item" style="padding-left: 5px;padding-right: 5px;color: black">
-                                <a href="#"> ${ data.number } </a>
+                                <a class="btn btn-secondary" href="#"> ${ data.number } </a>
                             </div>
-                            <c:if test="${ data.number < data.totalPages - 2 }">
+                            <c:if test="${ data.number <= data.totalPages - 2 }">
                                 <div class="page-item" style="padding-left: 5px;padding-right: 5px;">
-                                    <a href="/admin/account/index?page=${ data.number + 1 }">${ data.number + 1 }</a>
+                                    <a class="btn btn-secondary" href="/admin/account/index?page=${ data.number + 1 }">>></a>
                                 </div>
                             </c:if>
-                            <c:if test="${ data.number < data.totalPages - 1 }">
+                            <c:if test="${ data.number == data.totalPages - 1 }">
                                 <div class="page-item" style="padding-left: 5px;padding-right: 5px;">
-                                    <a href="/admin/account/index?page=${ data.totalPages - 1 }">${ data.totalPages - 1 }</a>
+                                    <a class="btn btn-secondary" href="">>></a>
+                                </div>
+                            </c:if>
+                            <c:if test="${ data.number <= data.totalPages - 1 }">
+                                <div class="page-item" style="padding-left: 5px;padding-right: 5px;">
+                                    <a class="btn btn-secondary" href="/admin/account/index?page=${ data.totalPages - 1 }">>|</a>
                                 </div>
                             </c:if>
                         </div>
