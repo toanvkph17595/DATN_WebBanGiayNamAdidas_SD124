@@ -62,7 +62,7 @@
                                 </td>
                                 <td class="text-center">
                                     <a href="" class="btn btn-primary" style="font-size: small">Sửa</a>
-                                    <a href="" class="btn btn-danger" style="font-size: small">Xóa</a>
+                                    <a href="" class="btn btn-danger" style="font-size: small" data-bs-toggle="modal" data-bs-target="#deleteModal">Xóa</a>
                                         <%--                        /admin/accounts/edit/${ acc.id }--%>
                                 </td>
                             </tr>
@@ -75,37 +75,37 @@
                         </tbody>
                     </table>
                     <div>
-                        <div class="pagination text-center">
-                            <div>Trang: </div>
+                        <div class="pagination text-center" style="line-height: 40px">
+                            <div style="margin-right: 35%">Trang:</div>
                             <div class="page-item" style="padding-left: 5px;padding-right: 5px;">
-                                <a class="btn btn-secondary" href="/admin/account/index">|<</a>
+                                <a class="btn btn-success-light fw-bold" href="/admin/account/index">|<</a>
                             </div>
                             <c:if test="${ data.number >= 1 }">
                                 <div class="page-item" style="padding-left: 5px;padding-right: 5px;">
-                                    <a class="btn btn-secondary" href="/admin/account/index?page=${ data.number - 1 }"><<</a>
+                                    <a class="btn btn-success-light fw-bold" href="/admin/account/index?page=${ data.number - 1 }"><<</a>
                                 </div>
                             </c:if>
                             <c:if test="${ data.number == 0 }">
                                 <div class="page-item" style="padding-left: 5px;padding-right: 5px;">
-                                    <a class="btn btn-secondary" href=""><<</a>
+                                    <a class="btn btn-success-light fw-bold" href=""><<</a>
                                 </div>
                             </c:if>
                             <div class="page-item" style="padding-left: 5px;padding-right: 5px;color: black">
-                                <a class="btn btn-secondary" href="#"> ${ data.number } </a>
+                                <a class="btn btn-success-light fw-bold" href="#"> ${ data.number + 1 } </a>
                             </div>
                             <c:if test="${ data.number <= data.totalPages - 2 }">
                                 <div class="page-item" style="padding-left: 5px;padding-right: 5px;">
-                                    <a class="btn btn-secondary" href="/admin/account/index?page=${ data.number + 1 }">>></a>
+                                    <a class="btn btn-success-light fw-bold" href="/admin/account/index?page=${ data.number + 1 }">>></a>
                                 </div>
                             </c:if>
                             <c:if test="${ data.number == data.totalPages - 1 }">
                                 <div class="page-item" style="padding-left: 5px;padding-right: 5px;">
-                                    <a class="btn btn-secondary" href="">>></a>
+                                    <a class="btn btn-success-light fw-bold" href="">>></a>
                                 </div>
                             </c:if>
                             <c:if test="${ data.number <= data.totalPages - 1 }">
                                 <div class="page-item" style="padding-left: 5px;padding-right: 5px;">
-                                    <a class="btn btn-secondary" href="/admin/account/index?page=${ data.totalPages - 1 }">>|</a>
+                                    <a class="btn btn-success-light fw-bold" href="/admin/account/index?page=${ data.totalPages - 1 }">>|</a>
                                 </div>
                             </c:if>
                         </div>
@@ -113,6 +113,22 @@
                 </div>
             </div>
         </article>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h1 class="modal-title" id="exampleModalLabel" style="font-size: medium">Xác nhận xóa nhân viên!</h1>
+                </div>
+                <div class="row">
+                    <div class="col-7"></div>
+                    <button type="button" class="btn btn-primary col" data-bs-dismiss="modal" style="font-size: small;margin: 5px 5px 5px 5px">Hủy</button>
+                    <button type="button" class="btn btn-danger col" style="font-size: small;margin: 5px 20px 5px 5px">Xác nhận</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Bootstrap js -->
