@@ -12,6 +12,12 @@ import java.util.List;
 
 @Repository
 public interface AccountRepository extends JpaRepository<Accounts, String> {
+    @Query("SELECT a FROM Accounts a WHERE a.userName in :listUserName AND a.status = :status")
+    Page<Accounts> findStaff(@Param("listUserName") List<String> listUserName, @Param("status") int status, Pageable pageable);
+
+    @Query("SELECT a FROM Accounts a WHERE a.userName = :userName")
+    Accounts findStaffByUsername(@Param("userName") String userName);
+
     @Query("SELECT a FROM Accounts a WHERE a.userName in :listUserName")
     Page<Accounts> findAllStaff(@Param("listUserName") List<String> listUserName, Pageable pageable);
 }
