@@ -21,8 +21,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12 btn" style="width: 100%;color: white;
-                    padding: 0px 0px 10px 30px;background-color:  rgb(50, 50, 50);
+            <div class="col-12 btn" style="width: 100%;color: black;
+                    padding: 0px 5px 5px 30px;background-color: #9DA1A7;
                     text-align: left;font-size: medium;">
                 <div class="fa fa-user" style="margin-right: 8px;"></div>Nhân viên
             </div>
