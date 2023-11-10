@@ -43,6 +43,7 @@ public class AccountController {
         }else{
             data = this.accountRepo.findAllStaff(listUserName,pageable);
         }
+        model.addAttribute("status", status);
         model.addAttribute("data", data);
         return "admin/staff/index";
     }
