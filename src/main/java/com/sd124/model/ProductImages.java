@@ -5,7 +5,7 @@ import lombok.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "Productimages")
+@Table(name = "productimages")
 public class ProductImages {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
