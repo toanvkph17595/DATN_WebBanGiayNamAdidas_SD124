@@ -14,67 +14,52 @@
                     background-color: rgb(31, 31, 31);font-weight: bold;">Chung</div>
         </div>
         <div class="row">
-            <div class="col-12 btn" style="width: 100%;color: white;
-                    padding: 0px 0px 10px 30px;background-color:  rgb(50, 50, 50);
-                    text-align: left;font-size: medium;">
-                <div class="fa fa-home" style="margin-right: 5px;"></div>Trang chủ
-            </div>
+            <a class="col-12 btn" style="width: 100%;color: white;
+                    padding: 0px 5px 5px 30px;text-align: left;font-size: medium;
+                    background-color:  rgb(50, 50, 50);" href="">Trang chủ</a>
         </div>
         <div class="row">
-            <div class="col-12 btn" style="width: 100%;color: black;
+            <a class="col-12 btn"  style="width: 100%;color: black;
                     padding: 0px 5px 5px 30px;background-color: #9DA1A7;
-                    text-align: left;font-size: medium;">
-                <div class="fa fa-user" style="margin-right: 8px;"></div>Nhân viên
-            </div>
+                    text-align: left;font-size: medium;"
+                    href="/admin/account/index/1">Nhân viên</a>
         </div>
         <div class="row">
-            <div class="col-12 btn" style="width: 100%;color: white;
-                    padding: 0px 0px 10px 30px;background-color:  rgb(50, 50, 50);
-                    text-align: left;font-size: medium;">
-                <div class="fa fa-book" style="margin-right: 8px;"></div>Doanh thu
-            </div>
+            <a class="col-12 btn" style="width: 100%;color: white;
+                    padding: 0px 5px 5px 30px;text-align: left;font-size: medium;
+                    background-color:  rgb(50, 50, 50);" href="">Doanh thu</a>
         </div>
         <div class="row">
-            <div class="col-12 btn" style="width: 100%;color: white;
-                    padding: 0px 0px 10px 30px;background-color:  rgb(50, 50, 50);
-                    text-align: left;font-size: medium;">
-                <div class="fa fa-id-card" style="margin-right: 4px;"></div>Danh sách liên hệ
-            </div>
+            <a class="col-12 btn" style="width: 100%;color: white;
+                    padding: 0px 5px 5px 30px;text-align: left;font-size: medium;
+                    background-color:  rgb(50, 50, 50);" href="">Danh sách liên hệ</a>
         </div>
     </div>
     <div>
         <div class="row">
-            <div class="col-12" style="width: 100%;color: rgb(170, 170, 170);
+            <a class="col-12" style="width: 100%;color: rgb(170, 170, 170);
                     margin-bottom: 10px;padding: 10px 0px 10px 30px;
-                    background-color: rgb(31, 31, 31);font-weight: bold;">Quản lý sản phẩm</div>
+                    background-color: rgb(31, 31, 31);font-weight: bold;">Quản lý sản phẩm</a>
         </div>
         <div class="row">
-            <div class="col-12 btn" style="width: 100%;color: white;
-                    padding: 0px 0px 10px 30px;background-color:  rgb(50, 50, 50);
-                    text-align: left;font-size: medium;">
-                <div class="fa fa-list" style="margin-right: 7px;"></div>Danh mục
-            </div>
+            <a class="col-12 btn" style="width: 100%;color: white;
+                    padding: 0px 5px 5px 30px;text-align: left;font-size: medium;
+                    background-color:  rgb(50, 50, 50);" href="/staff/category/index">Danh mục</a>
         </div>
         <div class="row">
-            <div class="col-12 btn" style="width: 100%;color: white;
-                    padding: 0px 0px 10px 30px;background-color:  rgb(50, 50, 50);
-                    text-align: left;font-size: medium;">
-                <div class="fa fa-cubes" style="margin-right: 7px;"></div>Sản phẩm
-            </div>
+            <a class="col-12 btn" style="width: 100%;color: white;
+                    padding: 0px 5px 5px 30px;text-align: left;font-size: medium;
+                    background-color:  rgb(50, 50, 50);" href="">Sản phẩm</a>
         </div>
         <div class="row">
-            <div class="col-12 btn" style="width: 100%;color: white;
-                    padding: 0px 0px 10px 30px;background-color:  rgb(50, 50, 50);
-                    text-align: left;font-size: medium;">
-                <div class="fa fa-shopping-basket" style="margin-right: 6px;"></div>Đơn hàng
-            </div>
+            <a class="col-12 btn" style="width: 100%;color: white;
+                    padding: 0px 5px 5px 30px;text-align: left;font-size: medium;
+                    background-color:  rgb(50, 50, 50);" href="/staff/order/index/0">Đơn hàng</a>
         </div>
         <div class="row">
-            <div class="col-12 btn" style="width: 100%;color: white;
-                    padding: 0px 0px 10px 30px;background-color:  rgb(50, 50, 50);
-                    text-align: left;font-size: medium;">
-                <div class="fa fa-calculator" style="margin-right: 8px;"></div>Quản lý kho
-            </div>
+            <a class="col-12 btn" style="width: 100%;color: white;
+                    padding: 0px 5px 5px 30px;text-align: left;font-size: medium;
+                    background-color:  rgb(50, 50, 50);" href="">Quản lý kho</a>
         </div>
     </div>
 </aside>
