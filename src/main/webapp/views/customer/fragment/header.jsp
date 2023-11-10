@@ -16,6 +16,11 @@
 
     <!-- Font awesome 5 -->
     <link href="/static/fonts/fontawesome/css/all.min.css" type="text/css" rel="stylesheet">
+    <script
+            src="https://code.jquery.com/jquery-3.7.1.js"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+            crossorigin="anonymous"></script>
+
 </head>
 
 
@@ -24,29 +29,29 @@
         <div class="container">
             <div class="row gy-3 align-items-center">
                 <div class="col-lg-3 col-sm-4 col-4">
-                    <a href="../" class="navbar-brand">
+                    <a href="../home" class="navbar-brand">
                         <img class="logo" height="65" src="/static/images/adidas.png">
                     </a> <!-- brand end.// -->
                 </div>
                 <div class="order-lg-last col-lg-4 col-sm-8 col-8">
                     <div class="float-end">
-                        <a href="#" class="btn btn-light">
+                        <a href="/favorite" class="btn btn-light">
                             <i class="fa fa-heart"></i>
                         </a>
-                        <a data-bs-toggle="offcanvas" href="#offcanvas_cart" class="btn btn-light">
+                        <a data-bs-toggle="offcanvas" href="/cart" class="btn btn-light">
                             <i class="fa fa-shopping-cart"></i>
                         </a>
-                        <a href="/login_form" class="btn btn-light">
+                        <a href="/login" class="btn btn-light">
                             <i class="fa fa-user"></i> <span class="ms-1 d-none d-sm-inline-block">Sign in </span>
                         </a>
                     </div>
                 </div> <!-- col end.// -->
                 <div class="col-lg-5 col-md-12 col-12">
-                    <form action="#" class="">
+                    <form>
                         <div class="input-group">
-                            <input type="search" class="form-control" style="width:55%" placeholder="Search">
+                            <input type="search" class="form-control" value="${keyword}" style="width:55%" placeholder="Search" name="keyword">
                             <button class="btn btn-secondary">
-                                <i class="fa fa-search"></i>
+                                <i class="fa fa-search"></i>Search
                             </button>
                         </div> <!-- input-group end.// -->
                     </form>

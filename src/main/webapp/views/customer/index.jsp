@@ -16,7 +16,7 @@
                     <article class="filter-group">
                         <header class="card-header">
                             <a href="#" class="title" data-bs-toggle="collapse" data-bs-target="#collapse_aside1">
-                                <i class="icon-control fa fa-chevron-down"></i> Related items
+                                <i class="icon-control fa fa-chevron-down"></i> Danh mục sản phẩm
                             </a>
                         </header>
                         <div class="collapse show" id="collapse_aside1">
@@ -33,58 +33,30 @@
 
                     <article class="filter-group">
                         <header class="card-header">
-                            <a href="#" class="title" data-bs-toggle="collapse" data-bs-target="#collapse_aside_brands">
-                                <i class="icon-control fa fa-chevron-down"></i> Brands
-                            </a>
-                        </header>
-                        <div class="collapse show" id="collapse_aside_brands">
-                            <div class="card-body">
-                                <label class="form-check mb-2">
-                                    <input class="form-check-input" type="checkbox" value="" checked>
-                                    <span class="form-check-label"> Originals </span>
-                                    <b class="badge rounded-pill bg-gray-dark float-end">120</b>
-                                </label> <!-- form-check end.// -->
-
-                                <label class="form-check mb-2">
-                                    <input class="form-check-input" type="checkbox" value="" checked>
-                                    <span class="form-check-label"> Adidas SportWear </span>
-                                    <b class="badge rounded-pill bg-gray-dark float-end">150</b>
-                                </label> <!-- form-check end.// -->
-
-                                <label class="form-check mb-2">
-                                    <input class="form-check-input" type="checkbox" value="" checked>
-                                    <span class="form-check-label"> Adidas Terrex </span>
-                                    <b class="badge rounded-pill bg-gray-dark float-end">50</b>
-                                </label> <!-- form-check end.// -->
-                            </div> <!-- card-body .// -->
-                        </div> <!-- collapse.// -->
-                    </article>
-
-                    <article class="filter-group">
-                        <header class="card-header">
                             <a href="#" class="title" data-bs-toggle="collapse" data-bs-target="#collapse_aside2">
-                                <i class="icon-control fa fa-chevron-down"></i> Price
+                                <i class="icon-control fa fa-chevron-down"></i> Giá
                             </a>
                         </header>
                         <div class="collapse show" id="collapse_aside2">
+                            <form method="post">
                             <div class="card-body">
-                                <input type="range" class="form-range" min="0" max="100">
                                 <div class="row mb-3">
                                     <div class="col-6">
-                                        <label for="min" class="form-label">Min</label>
-                                        <input class="form-control" id="min" placeholder="0" type="number">
+<%--                                        <label class="form-label">Min</label>--%>
+                                        <input class="form-control" name="min" placeholder="0" type="number">
                                     </div> <!-- col end.// -->
 
                                     <div class="col-6">
-                                        <label for="max" class="form-label">Max</label>
-                                        <input class="form-control" id="max" placeholder="10tr" type="number">
+<%--                                        <label class="form-label">Max</label>--%>
+                                        <input class="form-control" name="max" placeholder="10tr" type="number">
                                     </div> <!-- col end.// -->
                                 </div> <!-- row end.// -->
+
                                 <button class="btn btn-light w-100" type="button">Apply</button>
                             </div> <!-- card-body.// -->
+                            </form>
                         </div> <!-- collapse.// -->
                     </article> <!-- filter-group // -->
-
 
                 </div> <!-- card.// -->
                 <!-- ===== Card for sidebar filter .// ===== -->
@@ -122,11 +94,11 @@
                     <nav class="ms-3">
                         <ul class="pagination">
                             <li class="page-item">
-                                <a class="page-link" href="/">First</a>
+                                <a class="page-link" href="/home">First</a>
                             </li>
                             <c:if test="${data.number != 0}">
                             <li class="page-item">
-                                <a class="page-link" href="/?page=${data.number - 1}">Previous</a>
+                                <a class="page-link" href="/home?page=${data.number - 1}">Previous</a>
                             </li>
                             </c:if>
                             <li class="page-item"><a class="page-link" href="#">${data.number}</a></li>
@@ -136,10 +108,10 @@
 <%--                            <li class="page-item"><a class="page-link" href="#">3</a></li>--%>
 
                             <li class="page-item">
-                                <a class="page-link" href="/?page=${data.number + 1}">Next</a>
+                                <a class="page-link" href="/home?page=${data.number + 1}">Next</a>
                             </li>
                             <li class="page-item">
-                                <a class="page-link" href="/?page=${data.totalPages - 1}">Last</a>
+                                <a class="page-link" href="/home?page=${data.totalPages - 1}">Last</a>
                             </li>
                         </ul>
                     </nav>

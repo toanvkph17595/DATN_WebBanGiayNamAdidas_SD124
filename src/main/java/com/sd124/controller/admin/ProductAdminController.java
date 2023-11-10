@@ -40,17 +40,17 @@ public class ProductAdminController {
     }
 
     @GetMapping("/edit/{id}")
-    public  String editPro(@PathVariable Integer id, Model model, Products products) {
+    public  String editPro(@PathVariable Integer id, Model model,@ModelAttribute("product") Products products) {
         products = productRepo.findById(id).get();
         List<Categories> lstCate = cateRepo.findAll();
 
         model.addAttribute("lstCate", lstCate);
-        model.addAttribute("product", products);
+//        model.addAttribute("product", products);
         return "admin/product/edit";
     }
 
     @PostMapping("update/{id}")
-    public String updatePro(@PathVariable Integer id, Products products){
+    public String updatePro(@PathVariable Integer id,@ModelAttribute("product") Products products){
         productRepo.save(products);
         return "redirect:/admin/product";
     }

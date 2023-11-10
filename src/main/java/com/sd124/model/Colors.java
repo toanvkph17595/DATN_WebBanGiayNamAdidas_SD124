@@ -15,4 +15,5 @@ public class Colors {
 
     @Column(name = "Name")
     private String name;
+
 }

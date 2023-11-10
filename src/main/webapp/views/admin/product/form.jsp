@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
-<%@ include file="../fragment/header.jsp" %>
+<%@include file="../fragment/head.jsp"%>
 
 <div class="container p-3">
     <h4>Thông tin sản phẩm</h4>

@@ -17,7 +17,7 @@ public class ProductVariants {
     @JoinColumn(name = "IdPRD")
     private Products product_id;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "IdCL")
     private Colors color_id;
 
@@ -28,4 +28,5 @@ public class ProductVariants {
     @ManyToOne
     @JoinColumn(name = "IdPRI")
     private ProductImages proImage_id;
+
 }
