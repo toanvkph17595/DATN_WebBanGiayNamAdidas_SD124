@@ -101,11 +101,11 @@
                         <div class="pagination text-center" style="line-height: 40px">
                             <div style="margin-right: 32%">Trang:</div>
                             <div class="page-item" style="padding-left: 5px;padding-right: 5px;">
-                                <a class="btn btn-success-light fw-bold" href="/admin/account/index">|<</a>
+                                <a class="btn btn-success-light fw-bold" href="/admin/account/index/${status}">|<</a>
                             </div>
                             <c:if test="${ data.number >= 1 }">
                                 <div class="page-item" style="padding-left: 5px;padding-right: 5px;">
-                                    <a class="btn btn-success-light fw-bold" href="/admin/account/index?page=${ data.number - 1 }"><<</a>
+                                    <a class="btn btn-success-light fw-bold" href="/admin/account/index/${status}?page=${ data.number - 1 }"><<</a>
                                 </div>
                             </c:if>
                             <c:if test="${ data.number == 0 }">
@@ -118,7 +118,7 @@
                             </div>
                             <c:if test="${ data.number <= data.totalPages - 2 }">
                                 <div class="page-item" style="padding-left: 5px;padding-right: 5px;">
-                                    <a class="btn btn-success-light fw-bold" href="/admin/account/index?page=${ data.number + 1 }">>></a>
+                                    <a class="btn btn-success-light fw-bold" href="/admin/account/index/${status}?page=${ data.number + 1 }">>></a>
                                 </div>
                             </c:if>
                             <c:if test="${ data.number == data.totalPages - 1 }">
@@ -128,7 +128,7 @@
                             </c:if>
                             <c:if test="${ data.number <= data.totalPages - 1 }">
                                 <div class="page-item" style="padding-left: 5px;padding-right: 5px;">
-                                    <a class="btn btn-success-light fw-bold" href="/admin/account/index?page=${ data.totalPages - 1 }">>|</a>
+                                    <a class="btn btn-success-light fw-bold" href="/admin/account/index/${status}?page=${ data.totalPages - 1 }">>|</a>
                                 </div>
                             </c:if>
                         </div>
