@@ -101,11 +101,12 @@
                     </div>
                     <hr><br>
                     <div style="text-align: center">
+                        <a href="/staff/order/index/0" class="btn btn-secondary">Quay lại</a>
                         <c:if test="${ orders.status==0 }">
-                            <a href="" class="btn btn-success">Đã giao hàng</a>
+                            <a href="/staff/order/success0/${orders.id}" class="btn btn-success">Đã giao hàng</a>
                         </c:if>
                         <c:if test="${ orders.status==1 }">
-                            <a href="" class="btn btn-success">Đã hoàn thành</a>
+                            <a href="/staff/order/success1/${orders.id}" class="btn btn-success">Đã hoàn thành</a>
                         </c:if>
                         <a href="" class="btn btn-primary">Sửa</a>
                     </div>
