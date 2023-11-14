@@ -87,7 +87,7 @@
                                 <a href="/staff/order/detail/${ order.id }" class="btn btn-primary" style="font-size: small">Xem chi tiết</a>
 <%--                                <a href="/staff/order/success/${ order.id }" type="button" class="btn btn-success col" style="font-size: small;margin: 5px 20px 5px 5px">Hoàn thành</a>--%>
                                 <c:if test="${ order.status!=3 }">
-                                    <a href="" class="btn btn-danger" style="font-size: small" data-bs-toggle="modal" data-bs-target="#deleteModal">Hủy</a>
+                                    <a href="/staff/order/success3/${order.id}" class="btn btn-danger" style="font-size: small" data-bs-toggle="modal" data-bs-target="#deleteModal">Hủy</a>
                                 </c:if>
 
                                 <!-- Modal -->
