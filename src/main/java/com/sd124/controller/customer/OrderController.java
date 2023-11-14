@@ -56,10 +56,25 @@ public class OrderController {
         return "redirect:/staff/order/index/0";
     }
 
-    @GetMapping("/success/{id}")
-    public  String success(@PathVariable Integer id){
+    @GetMapping("/success0/{id}")
+    public  String success0(@PathVariable Integer id){
+        Orders orders = orderRepo.getOne(id);
+        orders.setStatus(1);
+        orderRepo.save(orders);
+        return "redirect:/staff/order/index/0";
+    }
+    @GetMapping("/success1/{id}")
+    public  String success1(@PathVariable Integer id){
         Orders orders = orderRepo.getOne(id);
         orders.setStatus(2);
+        orderRepo.save(orders);
+        return "redirect:/staff/order/index/0";
+    }
+
+    @GetMapping("/success3/{id}")
+    public  String success3(@PathVariable Integer id){
+        Orders orders = orderRepo.getOne(id);
+        orders.setStatus(3);
         orderRepo.save(orders);
         return "redirect:/staff/order/index/0";
     }
