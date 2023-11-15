@@ -37,18 +37,26 @@
                     <a href="/staff/order/index/3" style="text-decoration: none;margin-left: 10px">4. Đã hoàn thành</a>
                     <a href="/staff/order/index/4" style="text-decoration: none;margin-left: 10px">5. Đã hủy</a>
                 </div>
-<%--                <div class="col-5">--%>
-<%--                    <form method="get" action="/staff/order/index/search">--%>
-<%--                        <div class="row">--%>
-<%--                            <div class="col-8">--%>
-<%--                                <input name="search" placeholder="Nhập tên/số điện thoại khách hàng..." type="text" style="width: 100%;height: 35px;font-size: small"/>--%>
-<%--                            </div>--%>
-<%--                            <div class="col-4">--%>
-<%--                                <button type="submit" class="btn btn-primary"  style="width: 100%;font-size: small">Tìm kiếm</button>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </form>--%>
-<%--                </div>--%>
+            </div>
+            <hr>
+            <div style="line-height: 40px;margin-bottom: 15px">
+                <form method="get" action="/staff/order/index/search">
+                    <div class="row" style="font-size: small">
+                        <div class="col-1">Tìm kiếm : </div>
+                        <div class="col-4">
+                            <input name="keyword" value="${keyword}" placeholder="Mã đơn hàng, họ và tên khách hàng..." type="text" style="width: 100%;height: 35px;"/>
+                        </div>
+                        <div class="col-3">Từ ngày:
+                            <input name="startDate" value="${startDate}"  type="date" style="width: 70%;height: 35px;">
+                        </div>
+                        <div class="col-3">Đến ngày:
+                            <input name="endDate"  value="${endDate}" type="date" style="width: 70%;height: 35px;">
+                        </div>
+                        <div class="col-1">
+                            <button type="submit" class="btn btn-success" style="font-size: small;width: 100%">Tìm</button>
+                        </div>
+                    </div>
+                </form>
             </div>
             <div>
                 <table class="table table-bordered border-dark" style="font-size: small;line-height: 30px">
