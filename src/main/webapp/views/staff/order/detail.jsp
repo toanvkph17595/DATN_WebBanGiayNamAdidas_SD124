@@ -69,6 +69,8 @@
                             <tr>
                                 <th class="text-center"> Mã sản phẩm</th>
                                 <th class="text-center"> Tên sản phẩm</th>
+                                <th class="text-center"> Màu</th>
+                                <th class="text-center"> Kích cỡ</th>
                                 <th class="text-center"> Đơn giá</th>
                                 <th class="text-center"> Số lượng</th>
                                 <th class="text-center"> Tổng giá</th>
@@ -79,21 +81,23 @@
                                 <tr>
                                     <td class="">${ orderDetail.productVariants_id.id }</td>
                                     <td class="">${ orderDetail.productVariants_id.product_id.name }</td>
+                                    <td class="">${ orderDetail.color }</td>
+                                    <td class="">${ orderDetail.size }</td>
                                     <td class="" style="text-align: right">${ orderDetail.productVariants_id.product_id.price }</td>
                                     <td class="" style="text-align: center">${ orderDetail.quantity }</td>
                                     <td class="" style="text-align: right">${ orderDetail.productVariants_id.product_id.price*orderDetail.quantity }</td>
                                 </tr>
                             </c:forEach>
                                 <tr style="border: white;text-align: right">
-                                    <td colspan="4" style="">Tổng giá:</td>
+                                    <td colspan="6" style="">Tổng giá:</td>
                                     <td>${orders.total}</td>
                                 </tr>
                                 <tr style="border: white;text-align: right">
-                                    <td colspan="4">Phí vận chuyển:</td>
+                                    <td colspan="6">Phí vận chuyển:</td>
                                     <td>${orders.shippingFee}</td>
                                 </tr>
                                 <tr style="border: white;text-align: right">
-                                    <td colspan="4">Tổng đơn:</td>
+                                    <td colspan="6">Tổng đơn:</td>
                                     <td>${orders.shippingFee + orders.total}</td>
                                 </tr>
                             </tbody>
