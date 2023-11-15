@@ -25,4 +25,10 @@ public class OrderDetails {
 
     @Column(name = "Quantity")
     private Integer quantity;
+
+    @Column(name = "Color")
+    private String color;
+
+    @Column(name = "Size")
+    private String size;
 }
