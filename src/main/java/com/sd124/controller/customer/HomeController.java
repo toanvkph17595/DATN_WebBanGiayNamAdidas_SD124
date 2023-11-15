@@ -93,7 +93,6 @@ public class HomeController {
 //        }
 //        return "redirect:/home";
 //    }
-    
     @GetMapping("/favorite/{id}")
     public String favorite(@PathVariable String id, Model model){
         Accounts acc = accRepo.findById(id).orElse(null);

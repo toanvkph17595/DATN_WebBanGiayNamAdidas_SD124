@@ -22,16 +22,16 @@
         <tbody>
         <c:forEach items="${lstCart}" var="c">
             <tr>
-                <td>${c.productVariant_id.product_id.id}</td>
-                <td>${c.productVariant_id.product_id.name}</td>
-                <td>${c.productVariant_id.color_id.name}</td>
-                <td><img style="height: 100px" class="product-img" src="../static/images/${c.productVariant_id.product_id.image}" alt=""/></td>
-                <td>${c.productVariant_id.size_id.name}</td>
+                <td>${c.productId}</td>
+                <td>${c.productName}</td>
+                <td>${c.colorName}</td>
+                <td><img style="height: 100px" class="product-img" src="../static/images/${c.productImage}" alt=""/></td>
+                <td>${c.sizeName}</td>
                 <td>${c.quantity}</td>
-                <td>${c.productVariant_id.product_id.price}</td>
-                <td style="min-width: 150px">${c.productVariant_id.product_id.price * c.quantity}</td>
+                <td>${c.productPrice}</td>
+                <td style="min-width: 150px">${c.productPrice * c.quantity}</td>
                 <td>
-                    <a href="/delete/${c.productId}" class="btn btn-sm btn-danger">Xóa</a>
+                    <a href="#" class="btn btn-sm btn-danger">Xóa</a>
                 </td>
             </tr>
         </c:forEach>

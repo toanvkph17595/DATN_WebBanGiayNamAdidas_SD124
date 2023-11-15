@@ -54,7 +54,6 @@
                                 <li><a class="dropdown-item" href="/login">Đăng nhập</a></li>
                             </c:if>
                         </ul>
-
                     </div>
                 </div> <!-- col end.// -->
                 <div class="col-lg-5 col-md-12 col-12">

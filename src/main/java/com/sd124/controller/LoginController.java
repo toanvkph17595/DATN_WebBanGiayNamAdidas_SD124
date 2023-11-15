@@ -28,7 +28,7 @@ public class LoginController {
     private RoleRepository roleRepo;
     @Autowired
     PasswordEncoder pe;
-
+  
 
     @GetMapping("/login")
     public String getForm(){

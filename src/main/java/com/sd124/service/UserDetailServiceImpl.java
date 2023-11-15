@@ -21,7 +21,6 @@ public class UserDetailServiceImpl implements UserDetailsService{
     @Autowired
     HttpServletRequest request;
 
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Accounts acc = accRepo.findById(username).orElse(null);

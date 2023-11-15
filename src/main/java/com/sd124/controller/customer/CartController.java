@@ -100,7 +100,6 @@ public class CartController {
 //    }
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable int id){
-
         return "redirect:/cart";
     }
 
