@@ -18,7 +18,6 @@ import static org.springframework.security.web.util.matcher.AntPathRequestMatche
 
 @Configuration
 @EnableWebSecurity
-//@EnableWebMvc
 public class WebSecurityConfig {
     @Autowired
     UserDetailsService userDetailService;
@@ -27,29 +26,13 @@ public class WebSecurityConfig {
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
-    /*
-    @Bean
-    MvcRequestMatcher.Builder mvc(HandlerMappingIntrospector introspector){
-        return new MvcRequestMatcher.Builder(introspector).servletPath("/views");
-    }*/
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http, HandlerMappingIntrospector introspector) throws Exception {
-        /*
-        http.authorizeHttpRequests((authz) -> authz
-                .requestMatchers("/home").authenticated()
-//                        .requestMatchers(mvc.pattern("/admin/**")).hasRole("ADMIN")
-                        .anyRequest().permitAll());*/
-        /*
-        MvcRequestMatcher.Builder mvc = new MvcRequestMatcher.Builder(introspector);
-        http.authorizeHttpRequests((authz) -> authz
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-                //.requestMatchers(mvc.pattern("/admin/**")).hasRole("ADMIN")
-                //.requestMatchers(mvc.pattern("/staff/**")).hasRole("STAFF")
-                .anyRequest().permitAll());
-        */
         http.csrf().disable().cors().disable();
         http.authorizeHttpRequests()
+//                        .requestMatchers("/home", "/login", "/sigup", "/static/**").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/staff/**").hasRole("STAFF")
                         .anyRequest().permitAll();
@@ -58,7 +41,9 @@ public class WebSecurityConfig {
                 .defaultSuccessUrl("/", false)
                 .permitAll();
 
-        http.logout().logoutUrl("/logout").logoutSuccessUrl("/");
+
+        http.logout().logoutSuccessUrl("/");
+//        .logoutUrl("/logout")
         return http.build();
     }
 }

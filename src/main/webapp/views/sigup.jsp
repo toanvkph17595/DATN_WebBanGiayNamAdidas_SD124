@@ -28,7 +28,7 @@
                         <a data-bs-toggle="offcanvas" href="#offcanvas_cart" class="btn btn-light">
                           <i class="fa fa-shopping-cart"></i>
                         </a> -->
-                        <a href="/login_" class="btn btn-light">
+                        <a href="#" class="btn btn-light">
                             <i class="fa fa-user"></i> <span class="ms-1 d-none d-sm-inline-block">Sign in </span>
                         </a>
 
@@ -56,7 +56,7 @@
         <div class="card shadow mx-auto" style="max-width:400px; margin-top:40px;">
             <div class="card-body">
                 <h4 class="card-title mb-4">Sign up</h4>
-                <form:form method="post" modelAttribute="account" action="/sigup">
+                <form:form method="post" action="/sigup">
                     <div class="mb-3">
                         <label class="form-label">Username</label>
                         <input type="text" class="form-control" name="username">

@@ -37,10 +37,10 @@
         <div class="card shadow mx-auto" style="max-width:400px; margin-top:40px;">
             <div class="card-body">
                 <h4 class="card-title mb-4" style="text-align: center;font-weight: bold;">ĐĂNG NHẬP</h4>
-<%--                <c:if test="${not empty sessionScope.error}">--%>
-<%--                    <div class="alert alert-danger">${sessionScope.error}</div>--%>
-<%--                    <c:remove var="error" scope="session"/>--%>
-<%--                </c:if>--%>
+                <c:if test="${not empty sessionScope.error}">
+                    <div class="alert alert-danger">${sessionScope.error}</div>
+                    <c:remove var="error" scope="session"/>
+                </c:if>
                 <form action="/login" method="post">
                     <div class="mb-3">
                         <label class="form-label">Username:</label>

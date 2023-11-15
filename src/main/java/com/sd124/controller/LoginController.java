@@ -28,9 +28,7 @@ public class LoginController {
     private RoleRepository roleRepo;
     @Autowired
     PasswordEncoder pe;
-//    @Autowired
-//    private HttpServletRequest request;
-
+  
 
     @GetMapping("/login")
     public String getForm(){
@@ -81,8 +79,7 @@ public class LoginController {
         accounts.setPhone(phone);
         accounts.setImage(image);
         accRepo.save(accounts);
-        model.addAttribute("account", accounts);
-        return "redirect:/login_form";
+        return "redirect:/login";
     }
 
 }

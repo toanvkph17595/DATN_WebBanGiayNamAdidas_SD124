@@ -39,6 +39,8 @@ public class Accounts {
 
     @OneToMany(mappedBy = "acc_id")
     List<Carts> cart;
+    @OneToMany(mappedBy = "acc_id")
+    List<FavoriteProducts> favoriteProducts;
 
     public String toString(){
         return fullName;

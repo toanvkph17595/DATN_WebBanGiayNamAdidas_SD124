@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
@@ -29,21 +30,30 @@
         <div class="container">
             <div class="row gy-3 align-items-center">
                 <div class="col-lg-3 col-sm-4 col-4">
-                    <a href="../home" class="navbar-brand">
+                    <a href="../" class="navbar-brand">
                         <img class="logo" height="65" src="/static/images/adidas.png">
                     </a> <!-- brand end.// -->
                 </div>
                 <div class="order-lg-last col-lg-4 col-sm-8 col-8">
                     <div class="float-end">
-                        <a href="/favorite" class="btn btn-light">
+                        <a href="/favorite/${sessionScope.acc.userName}" class="btn btn-light">
                             <i class="fa fa-heart"></i>
                         </a>
                         <a data-bs-toggle="offcanvas" href="/cart" class="btn btn-light">
                             <i class="fa fa-shopping-cart"></i>
                         </a>
-                        <a href="/login" class="btn btn-light">
-                            <i class="fa fa-user"></i> <span class="ms-1 d-none d-sm-inline-block">Sign in </span>
-                        </a>
+                        <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                             ${(acc == null) ? "Tài Khoản" : acc.fullName}
+                        </button>
+                        <ul class="dropdown-menu">
+                            <c:if test="${acc != null}">
+                                <li><a class="dropdown-item" href="/logout">Đăng xuất</a></li>
+                            </c:if>
+                            <c:if test="${acc == null}">
+                                <li><a class="dropdown-item" href="/sigup">Đăng kí</a></li>
+                                <li><a class="dropdown-item" href="/login">Đăng nhập</a></li>
+                            </c:if>
+                        </ul>
                     </div>
                 </div> <!-- col end.// -->
                 <div class="col-lg-5 col-md-12 col-12">

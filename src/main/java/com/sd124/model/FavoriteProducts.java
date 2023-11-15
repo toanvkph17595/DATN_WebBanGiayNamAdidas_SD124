@@ -20,4 +20,9 @@ public class FavoriteProducts {
     @ManyToOne
     @JoinColumn(name = "Username")
     private Accounts acc_id;
+
+    public FavoriteProducts(Accounts acc_id, Products product_id){
+        this.acc_id = acc_id;
+        this.product_id = product_id;
+    }
 }

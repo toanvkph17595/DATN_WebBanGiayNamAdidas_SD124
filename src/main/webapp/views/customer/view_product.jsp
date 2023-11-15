@@ -59,7 +59,7 @@
                         <div class="row mb-4">
                             <div class="col-md-12 col-12 mb-2">
                                 <label class="form-label">Số lượng: </label>
-                                <input name="quantity" type="number">
+                                <input name="quantity" type="number" value="1">
                             </div>
                         </div>
                         <div class="row mb-4">

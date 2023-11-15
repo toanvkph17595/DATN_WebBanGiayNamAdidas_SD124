@@ -10,10 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -27,11 +24,13 @@ public class HomeController {
     @Autowired
     private ProductImageRepository productImageRepo;
     @Autowired
-    private SizeRepository sizeRepo;
+    private AccountRepository accRepo;
     @Autowired
     private CategoryRepository cateRepo;
     @Autowired
     private ColorRepository colorRepo;
+    @Autowired
+    private FavoriteProductRepository favoriteProductRepo;
 
     @GetMapping ("/")
     public String home(Model model, @RequestParam(name = "page", defaultValue = "0") Integer page,
@@ -94,10 +93,29 @@ public class HomeController {
 //        }
 //        return "redirect:/home";
 //    }
-    
-    @GetMapping("/favorite")
-    public String favorite(){
-        return "customer/favorite_product";
+    @GetMapping("/favorite/{id}")
+    public String favorite(@PathVariable String id, Model model){
+        Accounts acc = accRepo.findById(id).orElse(null);
+        if(acc != null){
+            List<FavoriteProducts> lstFavorPro = acc.getFavoriteProducts();
+            model.addAttribute("lstProfavor", lstFavorPro);
+            return "customer/favorite_product";
+        }else {
+            return "redirect:/";
+        }
+    }
+    @GetMapping("/deleteFavorite/{id}")
+    public String deleteFovor(@PathVariable Integer id){
+        favoriteProductRepo.deleteById(id);
+        return "redirect:/";
+    }
+    @PostMapping("/add-to-favorite/{id}")
+    public String addFavorite(@PathVariable Integer id, HttpSession session){
+        Accounts acc = (Accounts) session.getAttribute("acc");
+        Products products = productRepo.findById(id).orElse(null);
+        FavoriteProducts favoriteProducts = new FavoriteProducts(acc, products);
+        favoriteProductRepo.save(favoriteProducts);
+        return "redirect:/";
     }
 
     @GetMapping("/confirmation")

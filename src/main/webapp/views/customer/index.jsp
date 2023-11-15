@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%@ include file="fragment/header.jsp" %>
@@ -79,7 +78,7 @@
                                         </div> <!-- price-wrap.// -->
                                         <p class="title mb-2">${p.name}</p>
                                         <a href="#" class="btn btn-dark">Add to cart</a>
-                                        <a href="#" class="btn btn-light btn-icon"> <i class="fa fa-heart"></i> </a>
+                                        <button id="btn-fv-${p.id}" class="btn-fv btn btn-light btn-icon" onclick="addToFavorite(${p.id})" > <i id="favorite" class="fa fa-heart"></i> </button>
                                     </figcaption>
                                 </figure>
                             </a>
@@ -123,6 +122,15 @@
     </div> <!-- container .//  -->
 </section>
 <!-- ============== SECTION CONTENT END// ============== -->
-
+<script>
+    function addToFavorite(product_id){
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/add-to-favorite/" + product_id, true);
+        xhr.send();
+        $('#favorite').val(product_id);
+        $('.btn-fv').removeClass('btn-light').addClass('btn-danger');
+        $('#btn-fv-'+product_id).removeClass('btn-danger').addClass('btn-light');
+    }
+</script>
 
 <%@ include file="fragment/footer.jsp" %>
