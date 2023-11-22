@@ -30,15 +30,22 @@
         <div class="container">
             <div class="row gy-3 align-items-center">
                 <div class="col-lg-3 col-sm-4 col-4">
-                    <a href="../" class="navbar-brand">
+                    <a href="/" class="navbar-brand">
                         <img class="logo" height="65" src="/static/images/adidas.png">
                     </a> <!-- brand end.// -->
                 </div>
                 <div class="order-lg-last col-lg-4 col-sm-8 col-8">
                     <div class="float-end">
+                        <c:if test="${acc != null}">
                         <a href="/favorite/${sessionScope.acc.userName}" class="btn btn-light">
-                            <i class="fa fa-heart"></i>
+                            <i class="fa fa-heart"></i>${numFavorite}
                         </a>
+                        </c:if>
+<%--                        <c:if test="${acc == null}">--%>
+<%--                        <a href="/" class="btn btn-light">--%>
+<%--                            <i class="fa fa-heart"></i>--%>
+<%--                        </a>--%>
+<%--                        </c:if>--%>
                         <a data-bs-toggle="offcanvas" href="/cart" class="btn btn-light">
                             <i class="fa fa-shopping-cart"></i>
                         </a>
@@ -47,6 +54,7 @@
                         </button>
                         <ul class="dropdown-menu">
                             <c:if test="${acc != null}">
+                                <li><a class="dropdown-item" href="/order_history/${acc.userName}">Lịch sử mua hàng</a></li>
                                 <li><a class="dropdown-item" href="/logout">Đăng xuất</a></li>
                             </c:if>
                             <c:if test="${acc == null}">
@@ -54,6 +62,7 @@
                                 <li><a class="dropdown-item" href="/login">Đăng nhập</a></li>
                             </c:if>
                         </ul>
+
                     </div>
                 </div> <!-- col end.// -->
                 <div class="col-lg-5 col-md-12 col-12">

@@ -1,5 +1,6 @@
 package com.sd124.model;
 
+import com.sd124.bean.CartItem;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -29,7 +30,6 @@ public class Accounts {
     private boolean status;
 
 
-
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "Authoritis",
             joinColumns = @JoinColumn(name = "username"),
@@ -38,9 +38,10 @@ public class Accounts {
     List<Roles> roles;
 
     @OneToMany(mappedBy = "acc_id")
-    List<Carts> cart;
-    @OneToMany(mappedBy = "acc_id")
     List<FavoriteProducts> favoriteProducts;
+
+    @OneToMany(mappedBy = "acc_id")
+    List<Orders> orders;
 
     public String toString(){
         return fullName;

@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="fragment/header.jsp" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
     <div class="container">
 
@@ -64,7 +63,7 @@
 
                 <!-- ========= content items ========= -->
                 <div class="row">
-                    <c:forEach items="${lstPro}" var="p">
+                    <c:forEach items="${lstPro.content}" var="p">
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <a href="/view-product/${p.id}">
                                 <figure class="card card-product-grid"  style="background-color: rgb(238, 238, 238);">
@@ -76,17 +75,40 @@
                                             <strong class="price">${p.price} đ</strong>
                                         </div> <!-- price-wrap.// -->
                                         <p class="title mb-2">${p.name}</p>
-                                        <a href="#" class="btn btn-dark">Add to cart</a>
-                                        <a href="#" class="btn btn-light btn-icon"> <i class="fa fa-heart"></i> </a>
                                     </figcaption>
                                 </figure>
                             </a>
                         </div> <!-- col end.// -->
                     </c:forEach>
                 </div>
+                <footer class="d-flex mt-4 justify-content-center">
+                    <%--                    <div>--%>
+                    <%--                        <a href="javascript: history.back()" class="btn btn-light"> &laquo; Go back</a>--%>
+                    <%--                    </div>--%>
+                    <nav class="ms-3">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="/">First</a>
+                            </li>
+                            <c:if test="${lstPro.number != 0}">
+                                <li class="page-item">
+                                    <a class="page-link" href="/?page=${lstPro.number - 1}">Previous</a>
+                                </li>
+                            </c:if>
+                            <li class="page-item"><a class="page-link" href="#">${lstPro.number}</a></li>
 
+                            <li class="page-item">
+                                <a class="page-link" href="/?page=${lstPro.number + 1}">Next</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="/?page=${lstPro.totalPages - 1}">Last</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </footer>
             </main> <!-- col .// -->
         </div> <!-- row .// -->
+
     </div> <!-- container .//  -->
 <!-- ============== SECTION CONTENT END// ============== -->
 

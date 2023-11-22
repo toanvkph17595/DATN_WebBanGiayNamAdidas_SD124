@@ -1,9 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+<%@include file="fragment/header.jsp"%>
 
-<%@ include file="fragment/header.jsp" %>
-
-<div class="container p-3">
+<form class="container mt-3" action="/saveShippingInfo" method="post">
     <h4>Danh sách sản phẩm</h4>
     <table class="table mt-3">
         <thead>
@@ -20,7 +18,7 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${lstCart}" var="c">
+        <c:forEach items="${carts}" var="c">
             <tr>
                 <td>${c.productId}</td>
                 <td>${c.productName}</td>
@@ -37,7 +35,20 @@
         </c:forEach>
         </tbody>
     </table>
-    <a href="/checkout" class="btn btn-primary">Thanh toán</a>
-</div>
+    <h4>Thông tin nhận hàng</h4>
+    <div class="row mx-1 form-group">
+        <label class="form-label">Địa chỉ:</label>
+        <input name="address" class="form-control"/>
+        <label class="text-danger">${errAddress}</label>
+    </div>
 
-<%@ include file="fragment/footer.jsp" %>
+    <div class="mt-2 row mx-1 form-group">
+        <label class="form-label">Số ĐT:</label>
+        <input name="phone" class="form-control"/>
+        <label class="text-danger">${errPhone}</label>
+    </div>
+
+    <button class="my-3 btn btn-primary" type="submit">Đặt hàng</button>
+</form>
+
+<%@include file="fragment/footer.jsp"%>

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 @NoArgsConstructor @AllArgsConstructor
@@ -18,8 +19,9 @@ public class Orders {
     @JoinColumn(name = "Username")
     private Accounts acc_id;
 
-    @JoinColumn(name = "CreateDate")
-    private Date create_date = new Date();
+    @JoinColumn(name = "Createdate")
+    @Temporal(TemporalType.DATE)
+    private Date createdate = new Date();
 
     @JoinColumn(name = "Total")
     private Double total;
@@ -27,15 +29,15 @@ public class Orders {
     @JoinColumn(name = "Status")
     private String status;
 
-    @JoinColumn(name = "DeliverDate")
-    private Date delever_date;
+    @JoinColumn(name = "Deliverdate")
+    private Date deliverdate;
 
-    @JoinColumn(name = "Shipfee")
-    private Double shipfee;
+    @OneToMany(mappedBy = "order_id")
+    List<OrderDetails> orderDetail;
 
-    @JoinColumn(name = "Address")
-    private String address;
-
-    @JoinColumn(name = "Phone")
-    private String phone;
+    public static interface Status {
+        public String New = "NEW";
+        public String Delivered = "DELIVERED";
+        public String Cancelled = "CANCELLED";
+    }
 }

@@ -32,18 +32,17 @@ public class WebSecurityConfig {
 
         http.csrf().disable().cors().disable();
         http.authorizeHttpRequests()
-//                        .requestMatchers("/home", "/login", "/sigup", "/static/**").permitAll()
+//                        .requestMatchers("/", "/sigup", "/logout").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/staff/**").hasRole("STAFF")
+                        .requestMatchers("/checkout", "/comment/**", "/order_history/**").authenticated()
                         .anyRequest().permitAll();
         http.formLogin().
                 loginPage("/login")
                 .defaultSuccessUrl("/", false)
                 .permitAll();
 
-
-        http.logout().logoutSuccessUrl("/");
-//        .logoutUrl("/logout")
+        http.logout().logoutUrl("/logout").logoutSuccessUrl("/");
         return http.build();
     }
 }

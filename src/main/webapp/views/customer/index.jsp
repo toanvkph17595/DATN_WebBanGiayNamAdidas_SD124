@@ -77,8 +77,9 @@
                                             <strong class="price">${p.price} đ</strong>
                                         </div> <!-- price-wrap.// -->
                                         <p class="title mb-2">${p.name}</p>
-                                        <a href="#" class="btn btn-dark">Add to cart</a>
-                                        <button id="btn-fv-${p.id}" class="btn-fv btn btn-light btn-icon" onclick="addToFavorite(${p.id})" > <i id="favorite" class="fa fa-heart"></i> </button>
+<%--                                        <a href="/cart" class="btn btn-dark">Add to cart</a>--%>
+
+                                        <!--<button id="btn-fv-${p.id}" class="btn btn-light btn-icon" onclick="addToFavorite(${p.id})" > <i id="heart-icon" class="fa fa-heart"></i> </button>-->
                                     </figcaption>
                                 </figure>
                             </a>
@@ -93,11 +94,11 @@
                     <nav class="ms-3">
                         <ul class="pagination">
                             <li class="page-item">
-                                <a class="page-link" href="/home">First</a>
+                                <a class="page-link" href="/">First</a>
                             </li>
                             <c:if test="${data.number != 0}">
                             <li class="page-item">
-                                <a class="page-link" href="/home?page=${data.number - 1}">Previous</a>
+                                <a class="page-link" href="/?page=${data.number - 1}">Previous</a>
                             </li>
                             </c:if>
                             <li class="page-item"><a class="page-link" href="#">${data.number}</a></li>
@@ -107,10 +108,10 @@
 <%--                            <li class="page-item"><a class="page-link" href="#">3</a></li>--%>
 
                             <li class="page-item">
-                                <a class="page-link" href="/home?page=${data.number + 1}">Next</a>
+                                <a class="page-link" href="/?page=${data.number + 1}">Next</a>
                             </li>
                             <li class="page-item">
-                                <a class="page-link" href="/home?page=${data.totalPages - 1}">Last</a>
+                                <a class="page-link" href="/?page=${data.totalPages - 1}">Last</a>
                             </li>
                         </ul>
                     </nav>
@@ -127,10 +128,22 @@
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "/add-to-favorite/" + product_id, true);
         xhr.send();
-        $('#favorite').val(product_id);
-        $('.btn-fv').removeClass('btn-light').addClass('btn-danger');
-        $('#btn-fv-'+product_id).removeClass('btn-danger').addClass('btn-light');
+
     }
+    // $(document).ready(function (){
+    //     $("heart-icon").click(function (){
+    //         if ($(this).hasClass("liked")) {
+    //             // Nếu có, loại bỏ lớp 'liked' và đổi màu về mặc định
+    //             $(this).removeClass("liked");
+    //             $(this).css("color", "");
+    //         } else {
+    //             // Nếu không, thêm lớp 'liked' và đổi màu sang đỏ
+    //             $(this).addClass("liked");
+    //             $(this).css("color", "red");
+    //         }
+    //     });
+    // });
+
 </script>
 
 <%@ include file="fragment/footer.jsp" %>

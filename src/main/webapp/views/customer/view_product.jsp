@@ -68,9 +68,9 @@
 
                                 <div class="thumbs-wrap">
                                     <input type="hidden" id="color_id" name="color_id">
-                                    <c:forEach items="${lstPro}" var="cl">
-                                        <button id="btn_color_${cl.color_id.id}" type="button" class="btn-color btn btn-light" onclick="chooseColor('${cl.color_id.id}')">
-                                            ${cl.color_id.name}
+                                    <c:forEach items="${colors}" var="cl">
+                                        <button id="btn_color_${cl.id}" type="button" class="btn-color btn btn-light" onclick="chooseColor('${cl.id}')">
+                                            ${cl.name}
                                         </button>
 
                                     </c:forEach>
@@ -83,16 +83,27 @@
                                 <div class="col-md-12 col-12 mb-2">
                                 <label class="form-label" style="margin-right: 22px;">Kích cỡ: </label>
                                     <input type="hidden" id="size_id" name="size_id">
-                                    <c:forEach items="${lstPro}" var="pv">
-                                        <button id="btn_size_${pv.size_id.id}" type="button" class="btn-size btn btn-light" style="min-width: 85px;margin-top: 5px;"
-                                            onclick="chooseSize('${pv.size_id.id}')">${pv.size_id.name}</button>
+                                    <c:forEach items="${sizes}" var="sz">
+                                        <button id="btn_size_${sz.id}" type="button" class="btn-size btn btn-light" style="min-width: 85px;margin-top: 5px;"
+                                            onclick="chooseSize('${sz.id}')">${sz.name}</button>
                                     </c:forEach>
                                 </div> <!-- col.// -->
                             </div>
 
                         <a href="#" class="btn  btn-warning"> Mua ngay </a>
                         <button class="btn  btn-dark"> <i class="me-1 fa fa-shopping-basket"></i> Thêm vào giỏ hàng </button>
-                        <a href="#" class="btn  btn-light"> <i class="me-1 fa fa-heart"></i></a>
+                        <c:if test="${acc != null}">
+                            <c:if test="${liked}">
+                                <a href="/delete-favorite/${product.id}" class="btn  btn-light">
+                                    <i class="me-1 fa fa-heart text-danger"></i>
+                                </a>
+                            </c:if>
+                            <c:if test="${!liked}">
+                                <a href="/add-to-favorite/${product.id}" class="btn  btn-light">
+                                    <i class="me-1 fa fa-heart"></i>
+                                </a>
+                            </c:if>
+                        </c:if>
                     </form>
                 </article> <!-- product-info-aside .// -->
             </main> <!-- col.// -->
@@ -100,7 +111,198 @@
 
     </div> <!-- container .//  -->
 </section>
+<section class="padding-y bg-light border-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- =================== COMPONENT SPECS ====================== -->
+                <div class="card">
+                    <header class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs">
+                            <li class="nav-item">
+                                <a href="#" data-bs-target="#tab_comment" data-bs-toggle="tab" class="nav-link active">Bình luận</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" data-bs-target="#tab_specs" data-bs-toggle="tab" class="nav-link ">Mô tả</a>
+                            </li>
+                        </ul>
+                    </header>
+                    <div class="tab-content">
+                        <article id="tab_comment" class="tab-pane show active card-body">
+                            <div class="container">
+                                <form action="/comment/${product.id}" method="post">
+                                    <div class="row">
+                                        <div class="col-md-9">
+                                            <label>Nội dung:</label>
+                                            <textarea class="col-12" name="comment" cols="" rows="5"></textarea>
 
+                                        </div>
+                                        <div class="col-md-3" style="text-align: center;margin-top: 20px;">
+                                            <div>
+                                                <ul class="rating-stars">
+                                                    <li style="width:100%" class="stars-active">
+                                                        <img src="images/misc/stars-active.svg" alt="">
+                                                    </li>
+                                                    <li>
+                                                        <img src="images/misc/starts-disable.svg" alt="">
+                                                    </li>
+                                                </ul>
+                                                <b class="label-rating text-warning"> </b>
+                                            </div>
+                                            <div style="margin-top: 30px;">
+                                                <button class="btn btn-primary">Gửi</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <hr>
+                                <div class="row">
+                                        <div class="col-md-7">
+                                            <p>Đánh giá:
+                                                <input type="hidden" id="" name="">
+                                                <button class="stars btn-light" type="button">
+                                                    5 &#9733;
+                                                </button>
+                                                <input type="hidden" id="" name="">
+                                                <button class="stars btn-light" type="button">
+                                                    4 &#9733;
+                                                </button>
+                                                <input type="hidden" id="" name="">
+                                                <button class="stars btn-light" type="button">
+                                                    3 &#9733;
+                                                </button>
+                                                <input type="hidden" id="" name="">
+                                                <button class="stars btn-light" type="button">
+                                                    2 &#9733;
+                                                </button>
+                                                <input type="hidden" id="" name="">
+                                                <button class="stars btn-light" type="button">
+                                                    1 &#9733;
+                                                </button>
+<%--                                                <b class="label-rating text-warning"> 4.5</b>--%>
+                                            </p>
+
+                                        </div>
+                                    <div class="col-md-5">
+                                        <label>Sắp xếp theo:</label>
+                                        <select name="" id="">
+                                            <option value="">Mới nhất</option>
+                                            <option value="">Đánh giá cao nhất</option>
+                                            <option value="">Đánh giá thấp nhất</option>
+                                        </select>
+                                    </div>
+                                    <div class="dropdown-divider"></div>
+                                </div>
+                                <div >
+                                    <c:forEach items="${lstPr}" var="pr">
+                                        <div>
+                                            <b>${pr.acc_id.fullName}</b>
+                                        </div>
+
+                                        <div style="margin-top: 10px;">
+                                            <p>${pr.comment}</p>
+                                        </div>
+
+                                        <div style="font-size: small; margin-bottom: 10px">Ngày đánh giá: ${pr.commentdate}</div>
+                                        <div class="dropdown-divider"></div>
+                                    </c:forEach>
+                                </div>
+<%--                                <label for="starRating">Rate:</label>--%>
+<%--                                <select id="starRating" name="starRating">--%>
+<%--                                    <option value="1">1 star</option>--%>
+<%--                                    <option value="2">2 stars</option>--%>
+<%--                                    <option value="3">3 stars</option>--%>
+<%--                                    <option value="4">4 stars</option>--%>
+<%--                                    <option value="5">5 stars</option>--%>
+<%--                                </select>--%>
+<%--                                <div style="margin-top: 20px;">--%>
+<%--                                    <a href="">Xem thêm >></a>--%>
+<%--                                </div>--%>
+                        </article> <!-- tab-content.// -->
+                        <article id="tab_specs" class="tab-pane show card-body">
+                            <b>ĐÔI GIÀY CHẠY BỘ ÊM ÁI CÓ SỬ DỤNG CHẤT LIỆU TÁI CHẾ.</b>
+                            <p> Bạn đã sẵn sàng nâng dần cường độ tập luyện? Đôi giày adidas
+                                này giúp bạn sải bước tiếp theo trên hành trình chạy bộ. Đệm
+                                Bounce siêu nhẹ mang đến cảm giác thoải mái và linh hoạt để
+                                trợ lực cho bạn khi tăng cường cự ly trên đường chạy hàng
+                                ngày. Đế ngoài bằng cao su bền bỉ đảm bảo độ bám trên nhiều
+                                bề mặt đa dạng để bạn tự tin sải bước.</p>
+                        </article> <!-- tab-content.// -->
+                    </div>
+                </div>
+                <!-- =================== COMPONENT SPECS .// ================== -->
+            </div> <!-- col.// -->
+            <aside class="col-lg-4">
+                <!-- =================== COMPONENT ADDINGS ====================== -->
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Sản phẩm tương tự</h5>
+
+                        <article class="itemside mb-3">
+                            <a href="#" class="aside">
+                                <img src="images/items/Giay_Pureboost_23.avif" width="96" height="96" class="img-md img-thumbnail">
+                            </a>
+                            <div class="info">
+                                <a href="#" class="title mb-1"> <strong>Giày Pureboost 23</strong></a>
+                                <p style="font-size: small;">Giày chạy</p>
+                                <b class="price"> 3.700.000 đ</b> <!-- price.// -->
+                            </div>
+                        </article>
+
+                        <article class="itemside mb-3">
+                            <a href="#" class="aside">
+                                <img src="images/items/Giay_Runfalcon_3.avif" width="96" height="96" class="img-md img-thumbnail">
+                            </a>
+                            <div class="info">
+                                <a href="#" class="title mb-1"> <strong>Giày Runfalcon 3</strong></a>
+                                <p style="font-size: small;">Giày chạy</p>
+                                <b class="price"> 1.800.000 đ</b> <!-- price.// -->
+                            </div>
+                        </article>
+
+                        <article class="itemside mb-3">
+                            <a href="#" class="aside">
+                                <img src="images/items/Giay_Ultraboost.avif" width="96" height="96" class="img-md img-thumbnail">
+                            </a>
+                            <div class="info">
+                                <a href="#" class="title mb-1"> <strong>Giày Ultraboost</strong></a>
+                                <p style="font-size: small;">Giày chạy</p>
+                                <b class="price"> 5.200.000 đ</b> <!-- price.// -->
+                            </div>
+                        </article>
+
+                        <article class="itemside mb-3">
+                            <a href="#" class="aside">
+                                <img src="images/items/Giay_Avryn.avif" width="96" height="96" class="img-md img-thumbnail">
+                            </a>
+                            <div class="info">
+                                <a href="#" class="title mb-1"> <strong>Giày Avryn</strong></a>
+                                <p style="font-size: small;">Giày chạy</p>
+                                <b class="price"> 3.800.000 đ</b> <!-- price.// -->
+                            </div>
+                        </article>
+
+                        <article class="itemside mb-3">
+                            <a href="#" class="aside">
+                                <img src="images/items/COUNTRY_XLG.avif" width="96" height="96" class="img-md img-thumbnail">
+                            </a>
+                            <div class="info">
+                                <a href="#" class="title mb-1"> <strong>Giày COUNTRY XLG</strong></a>
+                                <p style="font-size: small;">Giày chạy</p>
+                                <b class="price"> 2.600.000 đ</b> <!-- price.// -->
+                            </div>
+                        </article>
+
+                    </div> <!-- card-body .// -->
+                </div> <!-- card .// -->
+                <!-- =================== COMPONENT ADDINGS .// ================== -->
+            </aside> <!-- col.// -->
+        </div>
+
+        <br><br>
+
+    </div><!-- container // -->
+</section>
 <script>
     function  chooseColor(color_id) {
         $('#color_id').val(color_id);
@@ -112,6 +314,10 @@
         $('.btn-size').removeClass('btn-dark').addClass('btn-light');
         $('#btn_size_'+size_id).removeClass('btn-light').addClass('btn-dark');
     }
+    function rateProduct(starRating) {
+
+    }
 </script>
+
 
 <%@ include file="fragment/footer.jsp" %>

@@ -17,7 +17,7 @@ public class OrderDetails {
     private Orders order_id;
 
     @ManyToOne
-    @JoinColumn(name = "IdPRV")
+    @JoinColumn(name = "IdPRV", nullable = false)
     private ProductVariants productVariant_id;
 
     @JoinColumn(name = "Quantity")

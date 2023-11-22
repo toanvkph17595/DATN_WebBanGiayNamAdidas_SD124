@@ -28,7 +28,7 @@
                         <a data-bs-toggle="offcanvas" href="#offcanvas_cart" class="btn btn-light">
                           <i class="fa fa-shopping-cart"></i>
                         </a> -->
-                        <a href="#" class="btn btn-light">
+                        <a href="/login" class="btn btn-light">
                             <i class="fa fa-user"></i> <span class="ms-1 d-none d-sm-inline-block">Sign in </span>
                         </a>
 
