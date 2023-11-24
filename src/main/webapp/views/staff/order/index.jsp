@@ -71,7 +71,7 @@
                         <th class="text-center"> Ngày tạo</th>
                         <th class="text-center"> Ngày giao</th>
                         <th class="text-center"> Trạng thái</th>
-                        <th class="text-center"> Hành động</th>
+                        <th colspan="2" class="text-center"> Hành động</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -93,7 +93,8 @@
                             </td>
                             <td class="text-center">
                                 <a href="/staff/order/detail/${ order.id }" class="btn btn-primary" style="font-size: small">Xem chi tiết</a>
-<%--                                <a href="/staff/order/success/${ order.id }" type="button" class="btn btn-success col" style="font-size: small;margin: 5px 20px 5px 5px">Hoàn thành</a>--%>
+                            </td>
+                            <td class="text-center">
                                 <c:if test="${ order.status!=3 }">
                                     <a href="/staff/order/success3/${order.id}" class="btn btn-danger" style="font-size: small" data-bs-toggle="modal" data-bs-target="#deleteModal">Hủy</a>
                                 </c:if>
