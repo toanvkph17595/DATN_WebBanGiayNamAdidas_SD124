@@ -49,7 +49,7 @@
                             <th class="text-center"> Số điện thoại</th>
                             <th class="text-center"> Địa chỉ</th>
                             <th class="text-center"> Trạng thái</th>
-                            <th class="text-center"> Hành động</th>
+                            <th colspan="2" class="text-center"> Hành động</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -68,12 +68,14 @@
                                 </td>
                                 <td class="text-center">
                                     <a href="/admin/account/edit/${ acc.userName }" class="btn btn-primary" style="font-size: small">Sửa</a>
+                                </td>
+                                <td class="text-center">
                                     <c:if test="${ acc.status==1 }">
-                                        <a href="" class="btn btn-danger" style="font-size: small" data-bs-toggle="modal" data-bs-target="#deleteModal">Xóa</a>
+                                        <a href="" class="btn btn-danger" style="font-size: small" data-bs-toggle="modal" data-bs-target="#deleteModal${acc.userName}">Xóa</a>
                                     </c:if>
 
                                     <!-- Modal -->
-                                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="deleteModal${acc.userName}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header text-center">
