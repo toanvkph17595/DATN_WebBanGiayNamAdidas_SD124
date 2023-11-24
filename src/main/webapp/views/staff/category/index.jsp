@@ -39,7 +39,7 @@
                     <tr>
                         <th class="text-center"> Mã</th>
                         <th class="text-center"> Tên danh mục</th>
-                        <th class="text-center"> Hành động</th>
+                        <th colspan="2" class="text-center"> Hành động</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -49,6 +49,8 @@
                             <td class="">${ cate.name }</td>
                             <td class="text-center">
                                 <a href="/staff/category/edit/${ cate.id }" class="btn btn-primary" style="font-size: small">Sửa</a>
+                            </td>>
+                            <td class="text-center">
                                 <a class="btn btn-danger" style="font-size: small" data-bs-toggle="modal" data-bs-target="#deleteModal">Xóa</a>
 
                                 <!-- Delete Modal -->
