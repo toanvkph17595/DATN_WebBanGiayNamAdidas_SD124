@@ -38,17 +38,17 @@
                     <div class="float-end">
                         <c:if test="${acc != null}">
                         <a href="/favorite/${sessionScope.acc.userName}" class="btn btn-light">
-                            <i class="fa fa-heart"></i>${numFavorite}
+                            <i class="fa fa-heart"></i>
+                            ${lstProfavor.size()}
                         </a>
                         </c:if>
-<%--                        <c:if test="${acc == null}">--%>
-<%--                        <a href="/" class="btn btn-light">--%>
-<%--                            <i class="fa fa-heart"></i>--%>
-<%--                        </a>--%>
-<%--                        </c:if>--%>
-                        <a data-bs-toggle="offcanvas" href="/cart" class="btn btn-light">
+
+                        <c:if test="${carts != null && carts.size() > 0}">
+                        <a href="/view-cart" class="btn btn-light">
                             <i class="fa fa-shopping-cart"></i>
+                                ${carts.size()}
                         </a>
+                        </c:if>
                         <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                              ${(acc == null) ? "Tài Khoản" : acc.fullName}
                         </button>

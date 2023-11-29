@@ -37,10 +37,8 @@ public class HomeController {
     @Autowired HttpSession session;
 
     @GetMapping ("/")
-    public String home(Model model, @RequestParam(name = "page", defaultValue = "0") Integer page,
-                       @RequestParam(name = "size", defaultValue = "6") Integer size,
-                       @Param("keyword") String keyword){
-        Pageable pageable = PageRequest.of(page, size);
+    public String home(Model model,@Param("keyword") String keyword){
+        Pageable pageable = PageRequest.of(0,6);
         Page<Products> data = productRepo.findAll(pageable);
         //tìm kiếm theo tên
         if(keyword != null){
@@ -100,15 +98,17 @@ public class HomeController {
 
     @PostMapping("/comment/{id}")
     public String comments(@PathVariable Integer id, Model model,
-                           @RequestParam("comment") String comment){
+                           @RequestParam("comment") String comment,
+                           @RequestParam("rating") Integer rating){
         Accounts acc = (Accounts) session.getAttribute("acc");
         Products product = productRepo.findById(id).orElse(null);
+
         ProductRatings productRating = new ProductRatings();
         productRating.setAcc_id(acc);
         productRating.setProduct_id(product);
         productRating.setCommentdate(new Date());
         productRating.setComment(comment);
-        productRating.setRating(5);
+        productRating.setRating(rating);
 
         productRatingRepo.save(productRating);
         return "redirect:/view-product/" + id;
@@ -157,7 +157,7 @@ public class HomeController {
         return "customer/order_history";
     }
 
-    @GetMapping("/order_history/detail/{id}")
+    @GetMapping("/detail_history/{id}")
     public String detail_history(Model model, @PathVariable("id") Integer id){
         Orders orders = orderRepo.findById(id).orElse(null);
         List<OrderDetails> lstOrderDetail = orders.getOrderDetail();
@@ -165,9 +165,12 @@ public class HomeController {
         return "customer/detail_history";
     }
 
-    @GetMapping("/confirmation")
-    public String confirmation(){
-        return "customer/confirmation";
+    @RequestMapping("/customer/cancel-order/{id}")
+    public String cancel(@PathVariable Integer id){
+        Orders orders = orderRepo.findById(id).orElse(null);
+        orders.setStatus(Orders.Status.Cancelled);
+        orderRepo.save(orders);
+        return "redirect:/";
     }
 
 }

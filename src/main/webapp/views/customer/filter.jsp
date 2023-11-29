@@ -15,7 +15,7 @@
                     <article class="filter-group">
                         <header class="card-header">
                             <a href="#" class="title" data-bs-toggle="collapse" data-bs-target="#collapse_aside1">
-                                <i class="icon-control fa fa-chevron-down"></i> Related items
+                                <i class="icon-control fa fa-chevron-down"></i> Danh mục
                             </a>
                         </header>
                         <div class="collapse show" id="collapse_aside1">
@@ -33,7 +33,7 @@
                     <article class="filter-group">
                         <header class="card-header">
                             <a href="#" class="title" data-bs-toggle="collapse" data-bs-target="#collapse_aside2">
-                                <i class="icon-control fa fa-chevron-down"></i> Price
+                                <i class="icon-control fa fa-chevron-down"></i> Mức giá
                             </a>
                         </header>
                         <div class="collapse show" id="collapse_aside2">

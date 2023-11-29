@@ -24,7 +24,7 @@ public class Accounts {
     private String image;
     @Column(name ="Address")
     private String address;
-    @Column(name ="SĐT")
+    @Column(name ="Phone")
     private String phone;
     @Column(name ="Status", nullable = true)
     private boolean status;

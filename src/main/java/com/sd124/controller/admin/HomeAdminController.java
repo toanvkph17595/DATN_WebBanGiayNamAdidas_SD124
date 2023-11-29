@@ -11,4 +11,9 @@ public class HomeAdminController {
     public String home(){
         return "admin/index";
     }
+
+    @GetMapping("/char")
+    public String chart(){
+        return "admin/char";
+    }
 }

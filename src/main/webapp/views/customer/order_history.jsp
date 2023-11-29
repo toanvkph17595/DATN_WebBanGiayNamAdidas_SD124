@@ -5,6 +5,7 @@
     <section class="row">
         <div class="col mt-4">
             <div class="col mt-4">
+                <h4>Lịch sử mua hàng</h4>
                 <div class="card">
                     <div class="card-body">
                         <table class="table table-striped table-inverse">
@@ -26,13 +27,15 @@
                                     <td>${ orders.createdate}</td>
                                     <td>${ orders.acc_id.address}</td>
                                     <td>${ orders.status}</td>
-                                    <td><a
-                                            href="/order_history/detail/${orders.id}"><button
-                                            class="btn btn-warning">Detail</button></a>
-<%--                                        <c:if test="${orders.status == 0}">--%>
-<%--                                        <a href="/su22b1_sof3021/admin/orders/huy/${orders.id}"><button--%>
-<%--                                                class="btn btn-danger">Hủy</button></a>--%>
-<%--                                        </c:if>--%>
+                                    <td>
+                                        <a href="/detail_history/${orders.id}"><button
+                                            class="btn btn-warning">Detail</button>
+                                        </a>
+                                        <c:if test='${"NEW".equals(orders.status)}'>
+                                        <a href="/customer/cancel-order/${orders.id}"><button
+                                                class="btn btn-danger">Hủy</button>
+                                        </a>
+                                        </c:if>
                                     </td>
                                 </tr>
                             </c:forEach>

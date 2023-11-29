@@ -11,18 +11,17 @@
 
                 <!-- ===== Card for sidebar filter ===== -->
                 <div id="aside_filter" class="collapse card d-lg-block mb-5">
-
                     <article class="filter-group">
                         <header class="card-header">
                             <a href="#" class="title" data-bs-toggle="collapse" data-bs-target="#collapse_aside1">
-                                <i class="icon-control fa fa-chevron-down"></i> Danh mục sản phẩm
+                                <i class="icon-control fa fa-chevron-down"></i> Danh mục
                             </a>
                         </header>
                         <div class="collapse show" id="collapse_aside1">
                             <div class="card-body">
                                 <ul class="list-menu">
                                     <c:forEach items="${lstCate}" var="cate">
-                                    <li><a href="/filter/${cate.id}">${cate.name} </a></li>
+                                        <li ><a href="/filter/${cate.id}">${cate.name} </a></li>
                                     </c:forEach>
 
                                 </ul>
@@ -33,30 +32,26 @@
                     <article class="filter-group">
                         <header class="card-header">
                             <a href="#" class="title" data-bs-toggle="collapse" data-bs-target="#collapse_aside2">
-                                <i class="icon-control fa fa-chevron-down"></i> Giá
+                                <i class="icon-control fa fa-chevron-down"></i> Mức giá
                             </a>
                         </header>
                         <div class="collapse show" id="collapse_aside2">
-                            <form method="post">
                             <div class="card-body">
                                 <div class="row mb-3">
                                     <div class="col-6">
-<%--                                        <label class="form-label">Min</label>--%>
-                                        <input class="form-control" name="min" placeholder="0" type="number">
+                                        <label for="min" class="form-label">Min</label>
+                                        <input class="form-control" id="min" placeholder="0" type="number">
                                     </div> <!-- col end.// -->
 
                                     <div class="col-6">
-<%--                                        <label class="form-label">Max</label>--%>
-                                        <input class="form-control" name="max" placeholder="10tr" type="number">
+                                        <label for="max" class="form-label">Max</label>
+                                        <input class="form-control" id="max" placeholder="10tr" type="number">
                                     </div> <!-- col end.// -->
                                 </div> <!-- row end.// -->
-
                                 <button class="btn btn-light w-100" type="button">Apply</button>
                             </div> <!-- card-body.// -->
-                            </form>
                         </div> <!-- collapse.// -->
                     </article> <!-- filter-group // -->
-
                 </div> <!-- card.// -->
                 <!-- ===== Card for sidebar filter .// ===== -->
 

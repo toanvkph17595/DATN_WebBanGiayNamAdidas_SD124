@@ -90,7 +90,7 @@
                                 </div> <!-- col.// -->
                             </div>
 
-                        <a href="#" class="btn  btn-warning"> Mua ngay </a>
+                        <button class="btn  btn-warning"> Mua ngay </button>
                         <button class="btn  btn-dark"> <i class="me-1 fa fa-shopping-basket"></i> Thêm vào giỏ hàng </button>
                         <c:if test="${acc != null}">
                             <c:if test="${liked}">
@@ -130,27 +130,39 @@
                     <div class="tab-content">
                         <article id="tab_comment" class="tab-pane show active card-body">
                             <div class="container">
-                                <form action="/comment/${product.id}" method="post">
+                                <form action="/comment/${product.id}" method="post" id="commentForm">
                                     <div class="row">
+                                        <div class="col-md-9 text-center">
+<%--                                            <label>Đánh giá:</label>--%>
+                                            <a class="stars btn-light" type="button" onclick="setRating(1)">
+                                                <i class="fas fa-star text-warning" id="star1"></i>
+                                            </a>
+                                            <input type="hidden" name="rating" id="rating" value="1">
+                                            <a class="stars btn-light" type="button" onclick="setRating(2)">
+                                                <i class="fas fa-star text-warning" id="star2"></i>
+                                            </a>
+                                            <input type="hidden" name="rating" id="rating" value="2">
+                                            <a class="stars btn-light" type="button" onclick="setRating(3)">
+                                                <i class="fas fa-star text-warning" id="star3"></i>
+                                            </a>
+                                            <input type="hidden" name="rating" id="rating" value="3">
+                                            <a class="stars btn-light" type="button" onclick="setRating(4)">
+                                                <i class="fas fa-star text-warning" id="star4"></i>
+                                            </a>
+                                            <input type="hidden" name="rating" id="rating" value="4">
+                                            <a class="stars btn-light" type="button" onclick="setRating(5)">
+                                                <i class="fas fa-star text-warning" id="star5"></i>
+                                            </a>
+                                            <input type="hidden" name="rating" id="rating" value="5">
+                                        </div>
                                         <div class="col-md-9">
                                             <label>Nội dung:</label>
                                             <textarea class="col-12" name="comment" cols="" rows="5"></textarea>
 
                                         </div>
                                         <div class="col-md-3" style="text-align: center;margin-top: 20px;">
-                                            <div>
-                                                <ul class="rating-stars">
-                                                    <li style="width:100%" class="stars-active">
-                                                        <img src="images/misc/stars-active.svg" alt="">
-                                                    </li>
-                                                    <li>
-                                                        <img src="images/misc/starts-disable.svg" alt="">
-                                                    </li>
-                                                </ul>
-                                                <b class="label-rating text-warning"> </b>
-                                            </div>
                                             <div style="margin-top: 30px;">
-                                                <button class="btn btn-primary">Gửi</button>
+                                                <button class="btn btn-primary" type="button" onclick="submitForm()">Gửi</button>
                                             </div>
                                         </div>
                                     </div>
@@ -158,30 +170,6 @@
                                 <hr>
                                 <div class="row">
                                         <div class="col-md-7">
-                                            <p>Đánh giá:
-                                                <input type="hidden" id="" name="">
-                                                <button class="stars btn-light" type="button">
-                                                    5 &#9733;
-                                                </button>
-                                                <input type="hidden" id="" name="">
-                                                <button class="stars btn-light" type="button">
-                                                    4 &#9733;
-                                                </button>
-                                                <input type="hidden" id="" name="">
-                                                <button class="stars btn-light" type="button">
-                                                    3 &#9733;
-                                                </button>
-                                                <input type="hidden" id="" name="">
-                                                <button class="stars btn-light" type="button">
-                                                    2 &#9733;
-                                                </button>
-                                                <input type="hidden" id="" name="">
-                                                <button class="stars btn-light" type="button">
-                                                    1 &#9733;
-                                                </button>
-<%--                                                <b class="label-rating text-warning"> 4.5</b>--%>
-                                            </p>
-
                                         </div>
                                     <div class="col-md-5">
                                         <label>Sắp xếp theo:</label>
@@ -198,6 +186,32 @@
                                         <div>
                                             <b>${pr.acc_id.fullName}</b>
                                         </div>
+
+                                        <div class="col-md-9">
+                                            <c:forEach begin="1" end="${pr.rating}" varStatus="star">
+                                                <a class="stars btn-light" type="">
+                                                    <i class="fas fa-star text-warning"></i>
+                                                </a>
+                                            </c:forEach>
+                                        </div>
+
+<%--                                        <div class="col-md-9">--%>
+<%--                                            <a class="stars btn-light" type="">--%>
+<%--                                                <i class="fas fa-star text-warning"></i>--%>
+<%--                                            </a>--%>
+<%--                                            <a class="stars btn-light" type="">--%>
+<%--                                                <i class="fas fa-star text-warning"></i>--%>
+<%--                                            </a>--%>
+<%--                                            <a class="stars btn-light" type="">--%>
+<%--                                                <i class="fas fa-star text-warning"></i>--%>
+<%--                                            </a>--%>
+<%--                                            <a class="stars btn-light" type="">--%>
+<%--                                                <i class="fas fa-star text-warning"></i>--%>
+<%--                                            </a>--%>
+<%--                                            <a class="stars btn-light" type="">--%>
+<%--                                                <i class="fas fa-star text-warning"></i>--%>
+<%--                                            </a>--%>
+<%--                                        </div>--%>
 
                                         <div style="margin-top: 10px;">
                                             <p>${pr.comment}</p>
@@ -314,9 +328,24 @@
         $('.btn-size').removeClass('btn-dark').addClass('btn-light');
         $('#btn_size_'+size_id).removeClass('btn-light').addClass('btn-dark');
     }
-    function rateProduct(starRating) {
 
+    function setRating(rating) {
+        const selectRating = rating || 5;
+        document.getElementById('rating').value = selectRating;
+        for (let i = 1; i <= 5; i++) {
+            const star = document.getElementById(`star` + i);
+            if (i <= selectRating) {
+                star.classList.add('text-warning');
+            } else {
+                star.classList.remove('text-warning');
+            }
+        }
     }
+
+    function submitForm() {
+        document.getElementById('commentForm').submit();
+    }
+
 </script>
 
 

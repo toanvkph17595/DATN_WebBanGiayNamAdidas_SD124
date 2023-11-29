@@ -35,6 +35,8 @@
         </c:forEach>
         </tbody>
     </table>
+    <h5>Tổng tiền: ${total}đ</h5>
+    <hr>
     <h4>Thông tin nhận hàng</h4>
     <div class="row mx-1 form-group">
         <label class="form-label">Địa chỉ:</label>
@@ -50,5 +52,11 @@
 
     <button class="my-3 btn btn-primary" type="submit">Đặt hàng</button>
 </form>
-
+<script>
+    function confirmCart(){
+        if(confirm("Xác nhận đặt hàng")){
+            location.href = "/";
+        }
+    }
+</script>
 <%@include file="fragment/footer.jsp"%>

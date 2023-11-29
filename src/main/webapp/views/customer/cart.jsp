@@ -20,24 +20,37 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${lstCart}" var="c">
+        <c:forEach items="${carts}" var="c">
+        <form action="/update-cart/${c.productId}" method="post">
             <tr>
                 <td>${c.productId}</td>
                 <td>${c.productName}</td>
                 <td>${c.colorName}</td>
                 <td>${c.sizeName}</td>
                 <td><img style="height: 100px" class="product-img" src="../static/images/${c.productImage}" alt=""/></td>
-                <td>${c.quantity}</td>
+                <td>
+                    <input type="number" class="form-control"
+                           min="1"
+                           name="quantity"
+                           value="${c.quantity}"
+                           onchange="this.form.submit()"
+                           style="width:60px;">
+<%--                        ${c.quantity}--%>
+                </td>
                 <td>${c.productPrice}</td>
                 <td style="min-width: 150px">${c.productPrice * c.quantity}</td>
                 <td>
                     <a href="/delete/${c.productId}" class="btn btn-sm btn-danger">Xóa</a>
                 </td>
             </tr>
+        </form>
         </c:forEach>
         </tbody>
     </table>
+    <div class="my-2">Tổng số tiền: ${total}đ</div>
+    <a href="/" class="btn btn-secondary">Tiếp tục mua hàng</a>
     <a href="/checkout" class="btn btn-primary">Thanh toán</a>
+
 </div>
 
 <%@ include file="fragment/footer.jsp" %>

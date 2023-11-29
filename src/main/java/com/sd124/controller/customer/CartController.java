@@ -39,12 +39,16 @@ public class CartController {
     @Autowired
     private ProductImageRepository productImageRepository;
 
-    @GetMapping("/cart")
+    @GetMapping("/view-cart")
     public String getCart(Model model){
 
         List<CartItem> lstCart = (List<CartItem>) session.getAttribute("carts");
-
-        model.addAttribute("lstCart", lstCart);
+        long total = 0;
+        for(CartItem item : lstCart){
+            total += item.getQuantity() * item.getProductPrice();
+        }
+        if(total == 0) return  "redirect:/";
+        model.addAttribute("total", total);
         return "customer/cart";
     }
 
@@ -63,7 +67,7 @@ public class CartController {
                 item.setSizeName(size.getName());
                 item.setQuantity(quantity);
                 item.setProductImage(product.getImage());
-                item.setProductPrice((long) product.getPrice());
+                item.setProductPrice((int) product.getPrice());
 
                 List<CartItem> carts = (List<CartItem>) session.getAttribute("carts");
                 if(carts == null) {
@@ -85,12 +89,17 @@ public class CartController {
                 }
             }
 
-        return "redirect:/cart";
+        return "redirect:/view-cart";
     }
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable int id){
-
-        return "redirect:/cart";
+        List<CartItem> lstCart = (List<CartItem>) session.getAttribute("carts");
+        int index = -1;
+        for(int i = 0; i < lstCart.size(); i++){
+            if(lstCart.get(i).getProductId() == id) index = i;
+        }
+        if(index >= 0) lstCart.remove(index);
+        return "redirect:/view-cart";
     }
 //    @GetMapping("/buy-now")
 //    public String buynow(){
@@ -100,7 +109,13 @@ public class CartController {
 
     @GetMapping ("/checkout")
     public String check(@ModelAttribute ShippingInfo shippingInfo, Model model){
-
+        List<CartItem> lstCart = (List<CartItem>) session.getAttribute("carts");
+        long total = 0;
+        for(CartItem item : lstCart){
+            total += item.getQuantity() * item.getProductPrice();
+        }
+        if(total == 0) return  "redirect:/";
+        model.addAttribute("total", total);
         return "customer/shippinginfo";
     }
 
@@ -157,10 +172,23 @@ public class CartController {
             );
             orderDetails.setQuantity(item.getQuantity());
             orderDetailRepository.save(orderDetails);
-            carts.remove(item);
-//            orderDetails = new OrderDetails();
         }
+        session.removeAttribute("carts");
+
         return "redirect:/";
+    }
+
+    @PostMapping("/update-cart/{id}")
+    public String updateCart(@PathVariable int id,
+                             @RequestParam int quantity)
+    {
+        List<CartItem> carts = (List<CartItem>)session.getAttribute("carts");
+        int index = -1;
+        for(int i = 0; i < carts.size(); i++){
+            if(carts.get(i).getProductId() == id) index = i;
+        }
+        if(index >= 0) carts.get(index).setQuantity(quantity);
+        return "redirect:/view-cart";
     }
 
 }
