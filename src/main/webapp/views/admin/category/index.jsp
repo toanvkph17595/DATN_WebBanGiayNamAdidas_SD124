@@ -27,4 +27,5 @@
         </tbody>
     </table>
     <a href="/admin/category/add" class="btn btn-primary">Thêm</a>
+
 </div>

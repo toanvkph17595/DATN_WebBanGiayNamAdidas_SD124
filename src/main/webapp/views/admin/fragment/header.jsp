@@ -5,6 +5,8 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
+<script src="sweetalert2.min.js"></script>
+<link rel="stylesheet" href="sweetalert2.min.css">
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-0">
     <div class="navbar-nav collapse navbar-collapse">
@@ -25,7 +27,7 @@
                     Thông tin tài khoản
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#/">
+                <a class="dropdown-item" href="/logout">
                     Đăng xuất
                 </a>
             </div>

@@ -33,42 +33,12 @@
 
                     <article class="filter-group">
                         <header class="card-header">
-                            <a href="#" class="title" data-bs-toggle="collapse" data-bs-target="#collapse_aside_brands">
-                                <i class="icon-control fa fa-chevron-down"></i> Brands
-                            </a>
-                        </header>
-                        <div class="collapse show" id="collapse_aside_brands">
-                            <div class="card-body">
-                                <label class="form-check mb-2">
-                                    <input class="form-check-input" type="checkbox" value="" checked>
-                                    <span class="form-check-label"> Originals </span>
-                                    <b class="badge rounded-pill bg-gray-dark float-end">120</b>
-                                </label> <!-- form-check end.// -->
-
-                                <label class="form-check mb-2">
-                                    <input class="form-check-input" type="checkbox" value="" checked>
-                                    <span class="form-check-label"> Adidas SportWear </span>
-                                    <b class="badge rounded-pill bg-gray-dark float-end">150</b>
-                                </label> <!-- form-check end.// -->
-
-                                <label class="form-check mb-2">
-                                    <input class="form-check-input" type="checkbox" value="" checked>
-                                    <span class="form-check-label"> Adidas Terrex </span>
-                                    <b class="badge rounded-pill bg-gray-dark float-end">50</b>
-                                </label> <!-- form-check end.// -->
-                            </div> <!-- card-body .// -->
-                        </div> <!-- collapse.// -->
-                    </article>
-
-                    <article class="filter-group">
-                        <header class="card-header">
                             <a href="#" class="title" data-bs-toggle="collapse" data-bs-target="#collapse_aside2">
                                 <i class="icon-control fa fa-chevron-down"></i> Price
                             </a>
                         </header>
                         <div class="collapse show" id="collapse_aside2">
                             <div class="card-body">
-                                <input type="range" class="form-range" min="0" max="100">
                                 <div class="row mb-3">
                                     <div class="col-6">
                                         <label for="min" class="form-label">Min</label>
@@ -114,6 +84,7 @@
                         </div> <!-- col end.// -->
                     </c:forEach>
                 </div>
+
             </main> <!-- col .// -->
         </div> <!-- row .// -->
     </div> <!-- container .//  -->

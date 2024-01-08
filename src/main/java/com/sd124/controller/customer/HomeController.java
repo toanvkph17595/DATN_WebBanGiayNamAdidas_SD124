@@ -2,20 +2,18 @@ package com.sd124.controller.customer;
 
 import com.sd124.model.*;
 import com.sd124.repository.*;
-import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class HomeController {
@@ -26,18 +24,34 @@ public class HomeController {
     @Autowired
     private ProductImageRepository productImageRepo;
     @Autowired
-    private SizeRepository sizeRepo;
+    private AccountRepository accRepo;
     @Autowired
     private CategoryRepository cateRepo;
     @Autowired
     private ColorRepository colorRepo;
+    @Autowired
+    private FavoriteProductRepository favoriteProductRepo;
 
-    @GetMapping({"/", "/home"})
+    @GetMapping ("/")
     public String home(Model model, @RequestParam(name = "page", defaultValue = "0") Integer page,
-                       @RequestParam(name = "size", defaultValue = "6") Integer size){
+                       @RequestParam(name = "size", defaultValue = "6") Integer size,
+                       @Param("keyword") String keyword, @Param("min") Double min,
+                       @Param("max") Double max){
         Pageable pageable = PageRequest.of(page, size);
         Page<Products> data = productRepo.findAll(pageable);
+        //tìm kiếm theo tên
+        if(keyword != null){
+            data = productRepo.findProductByName(keyword, pageable);
+            model.addAttribute("keyword", keyword);
+        }
+
+        //tìm kiếm theo giá
+//        if(min != 0 && max != 0) {
+//            data = productRepo.findProductByPrice(min, max, pageable);
+//        }
+
         List<Categories> lstCate = cateRepo.findAll();
+
         model.addAttribute("data", data);
         model.addAttribute("lstCate", lstCate);
         return "customer/index";
@@ -55,21 +69,53 @@ public class HomeController {
 
     @GetMapping("/view-product/{id}")
     public String viewProduct(@PathVariable Integer id, Model model) {
-        Products products = productRepo.findById(id).get();
-        List<ProductImages> lstImages = productImageRepo.findAll();
-        List<Sizes> lstSize = sizeRepo.findAll();
+        List<ProductVariants> lstPro = productVariantRepo.findIdProduct(id);
+        for (int i = 0; i < lstPro.size(); i++) {
+            Products products = lstPro.get(i).getProduct_id();
+            model.addAttribute("product", products);
+        }
 
+//        List<Sizes> lstSize = sizeRepo.findAll();
 
-        model.addAttribute("lstSize", lstSize);
-        model.addAttribute("lstImage", lstImages);
-        model.addAttribute("product", products);
+//        model.addAttribute("lstSize", lstSize);
+        model.addAttribute("lstPro", lstPro);
+
 
         return "customer/view_product";
     }
-
-    @GetMapping("/cart")
-    public String cart(){
-        return "customer/cart";
+    
+//    @GetMapping("/search")
+//    public String search(Model model, @RequestParam("name") String keyword){
+//        Pageable pageable = PageRequest.of(0,6);
+//        if(keyword != null){
+//            Page<Products> products = productRepo.findProductByName(keyword, pageable);
+//            model.addAttribute("pro", products);
+//        }
+//        return "redirect:/home";
+//    }
+    @GetMapping("/favorite/{id}")
+    public String favorite(@PathVariable String id, Model model){
+        Accounts acc = accRepo.findById(id).orElse(null);
+        if(acc != null){
+            List<FavoriteProducts> lstFavorPro = acc.getFavoriteProducts();
+            model.addAttribute("lstProfavor", lstFavorPro);
+            return "customer/favorite_product";
+        }else {
+            return "redirect:/";
+        }
+    }
+    @GetMapping("/deleteFavorite/{id}")
+    public String deleteFovor(@PathVariable Integer id){
+        favoriteProductRepo.deleteById(id);
+        return "redirect:/";
+    }
+    @PostMapping("/add-to-favorite/{id}")
+    public String addFavorite(@PathVariable Integer id, HttpSession session){
+        Accounts acc = (Accounts) session.getAttribute("acc");
+        Products products = productRepo.findById(id).orElse(null);
+        FavoriteProducts favoriteProducts = new FavoriteProducts(acc, products);
+        favoriteProductRepo.save(favoriteProducts);
+        return "redirect:/";
     }
 
     @GetMapping("/confirmation")

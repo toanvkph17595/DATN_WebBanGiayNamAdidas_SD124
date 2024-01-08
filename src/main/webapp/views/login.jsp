@@ -1,12 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Type some info">
-    <meta name="author" content="Type name">
-
-    <title>Đăng nhập </title>
+<%--<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>--%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 
     <!-- Bootstrap css -->
     <link href="../static/css/bootstrap.css?v=2.0" rel="stylesheet" type="text/css" />
@@ -18,9 +12,7 @@
     <!-- Font awesome 5 -->
     <link href="../static/fonts/fontawesome/css/all.min.css" type="text/css" rel="stylesheet">
 
-</head>
 
-<body>
 
 <header class="section-header">
     <section class="header-main">
@@ -45,20 +37,18 @@
         <div class="card shadow mx-auto" style="max-width:400px; margin-top:40px;">
             <div class="card-body">
                 <h4 class="card-title mb-4" style="text-align: center;font-weight: bold;">ĐĂNG NHẬP</h4>
-                <form>
+                <c:if test="${not empty sessionScope.error}">
+                    <div class="alert alert-danger">${sessionScope.error}</div>
+                    <c:remove var="error" scope="session"/>
+                </c:if>
+                <form action="/login" method="post">
                     <div class="mb-3">
-                        <label class="form-label">Tên đăng nhập:</label>
-                        <input class="form-control" type="text">
+                        <label class="form-label">Username:</label>
+                        <input class="form-control" type="text" name="username">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Mật khẩu:</label>
-                        <input class="form-control" type="password">
-                    </div>
-                    <div class="mb-4">
-                        <label class="form-check">
-                            <input class="form-check-input" type="checkbox" checked value="">
-                            <span class="form-check-label"> Nhớ mật khẩu </span>
-                        </label>
+                        <input class="form-control" type="password" name="password">
                     </div>
                     <div class="mb-4">
                         <button type="submit" class="btn btn-primary w-100"> Đăng nhập </button>
@@ -70,7 +60,7 @@
                         <a href="#"> Quên mật khẩu? </a>
                     </div>
                     <div class="col-6" style="text-align: right;">
-                        <a href="#"> Đăng ký </a>
+                        <a href="/sigup"> Đăng ký </a>
                     </div>
                 </div>
             </div> <!-- card-body.// -->
@@ -95,5 +85,5 @@
 <!-- Custom js -->
 <script src="../static/js/script.js?v=2.0"></script>
 
-</body>
+
 

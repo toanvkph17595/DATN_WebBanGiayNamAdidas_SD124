@@ -13,7 +13,18 @@
         </div>
         <div class="mt-3">
             <a href="/admin/category" class="btn btn-secondary">Quay lại</a>
-            <button class="btn btn-primary">Lưu lại</button>
+            <button class="btn btn-primary" onclick="save()">Lưu lại</button>
         </div>
     </form:form>
+    <script>
+        function save(){
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Your work has been saved',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }
+    </script>
 </div>

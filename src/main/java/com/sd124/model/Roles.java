@@ -10,8 +10,8 @@ import lombok.*;
 @Entity
 public class Roles {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @JoinColumn(name = "Id")
+    private String id;
 
     @Column(name = "Name")
     private String name;
